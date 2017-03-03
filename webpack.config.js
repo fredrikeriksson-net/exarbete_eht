@@ -12,11 +12,13 @@ const config = {
     rules: [
       
     	// Babel Loader
+      // TODO: FIXA EXCLUDE SÅ ATT FIREBASE FUNKAR!!!
     	{
     	  test: /\.js$/,
+        exclude: /(node_modules)/,
     	  use: [{
     	    loader: 'babel-loader'
-    	  }]
+    	  }],
     	},
 
     	// CSS Loader

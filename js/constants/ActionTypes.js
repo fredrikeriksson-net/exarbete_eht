@@ -1,0 +1,3 @@
+// First test
+export const FETCH_USER_DATABASE = "FETCH_USER_DATABASE";
+export const FETCH_CURRENT_ERRAND = "FETCH_CURRENT_ERRAND";

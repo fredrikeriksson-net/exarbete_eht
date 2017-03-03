@@ -1,0 +1,20 @@
+// WITH UID?
+{
+  "rules": {
+    "users": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid"
+      }
+    }
+  }
+}
+
+
+// ALL TRUE
+{
+  "rules": {
+    ".read": "true",
+    ".write": "true"
+  }
+}

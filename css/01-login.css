@@ -1,0 +1,110 @@
+/*
+	EHT - Overview - Login
+	-------------------------------------------
+	Typography
+	Page Structure
+	Content & Media
+	Misc
+---------------------------------------------
+*/
+
+/*
+Typography
+*/
+
+p.input {
+	color: #666;
+	margin-bottom: 5px;
+}
+
+p#error {
+	color: #86181d;
+}
+
+a.close {
+	text-decoration: none;
+	color: #b6666b;
+	cursor: pointer;
+}
+
+a.close:hover {
+	text-decoration: none;
+	color: #86181d;
+}
+
+
+
+/*
+Page Structure
+*/
+.wrapper {
+margin-top: 50px;
+}
+
+.login_container {
+	border: 1px solid #d8dee2;
+	background-color: #FFF;
+	margin: 0 auto;
+	width: 360px;
+	padding: 20px;
+	border-radius: 5px;
+	margin-top: 15px;
+	margin-bottom: 30px;
+}
+
+.error_container {
+	display: flex;
+	flex-direction: row;
+	  align-items: center;
+  justify-content: space-around;
+	background-color: #ffdce0;
+	border-radius: 5px;
+	margin: 0 auto;
+	width: 380px;
+	padding: 10px;
+	border: 1px solid #ddc0c4;
+}
+
+
+/*
+Content & Media
+*/
+
+img.logo {
+	display: block;
+	margin: 0 auto;
+}
+
+input {
+	border: 1px solid #d8dee2;
+	border-radius: 3px;
+	padding: 5px;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+input:focus {
+	border: 1px solid #999;
+    outline: none;
+}
+
+button {
+	color: #FFF;
+	background-color: #32c854;
+	border: 1px solid #2fac4d;
+	padding: 10px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	width: 100%;
+	border-radius: 3px;
+	box-sizing: border-box;
+}
+
+button:hover {
+	background-color: #28a745;
+	cursor: pointer;
+}
+
+input:focus, button:focus {
+    outline: none;
+}

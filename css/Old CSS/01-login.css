@@ -1,0 +1,97 @@
+/*
+	EHT - Overview - Login
+	-------------------------------------------
+	Typography
+	Page Structure
+	Content & Media
+	Misc
+---------------------------------------------
+*/
+
+/* Typography */
+p {
+	font-family: 'Open Sans', sans-serif;
+	margin: 0;
+	padding: 10px;
+}
+
+h1 {
+	color: #666;
+  display: inline;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+}
+
+p#error {
+	color: red;
+}
+
+/* Page Structure */
+.wrapper {
+	width: 400px;
+	margin: 50px auto;
+}
+
+.wrapper_logo {
+  display: flex;
+  align-items: center;
+}
+
+.wrapper_login {
+	background-color: #FFF;
+	margin-bottom: 20px;
+	margin-top: 20px;
+	padding: 10px;
+	border: 1px solid #CCC;
+	border-radius: 3px;
+}
+
+.wrapper_error {
+	border: 1px solid #666;
+	display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+}
+
+/* Content & Media */
+img.logo {
+	width: 80px;
+	margin-right: 5%;
+}
+
+input {
+	background-color: #FFF;
+	font-family: 'Open Sans', sans-serif;
+	width: 90%;
+	padding: 10px;
+	border: 1px solid #CCC;
+	border-bottom: 1px solid #666;
+	border-radius: 2px;
+	margin-left: 5px; 
+}
+
+input:focus {
+outline: none;
+}
+
+button {
+	border: none;
+	color: #FFF;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: bold;
+	font-size: 14px;
+	background-color: #00B242;
+	width: 90%;
+	padding: 10px;
+	margin-left: 5px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	cursor: pointer;
+}
+
+button:hover {
+	background-color: #019337;
+}
+
+/* Misc */
