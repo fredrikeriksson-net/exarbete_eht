@@ -43,9 +43,18 @@ export default class StudentBasicInfo extends Component {
   
   render() {
 
+  const progressWidth = {
+    width: '40%',
+  };
+
       return (
         <div id="basic_wrapper">
-        <h1>Basinfo</h1>
+        
+          <header>
+            <h2 className="errand_header">Steg 2: Fyll i basinfo</h2>
+            <Link to="/" onClick={this.logOut} className="log_out">Logga ut</Link>
+          </header>
+          <div className="progress_bar" style={progressWidth}></div>
           
           <div id="teacher_wrapper">
             <h2>Läraren</h2>
@@ -68,7 +77,6 @@ export default class StudentBasicInfo extends Component {
           </div>
 
           <Link to="/student-learning-info" onClick={this.postBasicInfo}>Nästa</Link>
-          <Link to="/" onClick={this.logOut}>Log Out</Link>
 
         </div>
       );

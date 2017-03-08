@@ -32,12 +32,41 @@ logOut(){
 }
 
 
+
 render(){
+	
+	const progressWidth = {
+  	width: '20%',
+	};
+
 	return(
 		<div>
-			<button onClick={this.studentErrand}>Student Arrend</button>
-			<button onClick={this.groupErrand}>Group Arrend</button>
-			<Link to="/" onClick={this.logOut}>Log Out</Link>
+			
+			<header>
+				<h2 className="errand_header">Steg 1: Välj Ärende</h2>
+				<Link to="/" onClick={this.logOut} className="log_out">Logga ut</Link>
+			</header>
+			<div className="progress_bar" style={progressWidth}></div>
+			
+			<div className="errand_wrapper">
+				
+				<div className="options_wrapper">
+					
+					<div className="errand_container" onClick={this.studentErrand}>
+						<img src="../img/student.png"/>
+						<p>Enskild elev</p>
+					</div>
+						
+					<div className="errand_container" onClick={this.groupErrand}>
+						<img src="../img/group.png"/>
+						<p>Grupp</p>
+					</div>
+	
+				</div>
+	
+				
+
+			</div>
 		</div>
 	)
 }

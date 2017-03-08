@@ -200,30 +200,34 @@ export class StudentLearningInfo extends Component {
   }
 
   showSubjects(){
-    var subjectArray = [];
+    console.log("-------------------------------")
+    console.log("LABB: ", this.props.currentErrandReducer[0].learning)
 
     for(var learningID in this.props.currentErrandReducer[0].learning){
-      subjectArray.push(
-        <div key={learningID} className="holder">
-          <h2>{this.props.currentErrandReducer[0].learning[learningID].subject}</h2>
-          <p>Svårighet: {this.props.currentErrandReducer[0].learning[learningID].difficulty}</p>
-          <p>Frekvens: {this.props.currentErrandReducer[0].learning[learningID].frequency}</p>
-          <button onClick={this.showInfo.bind(this, learningID)}>Show Learning ID</button>
+      console.log("Learning IDs Subject : ", this.props.currentErrandReducer[0].learning[learningID].subject);
+      // console.log("Learning IDs Difficulty : ", this.props.currentErrandReducer[0].learning[learningID].difficulty);
+      
+      return (
+        <div className="subjects">
+          <h2>Ämne:</h2>
+          <p>{this.props.currentErrandReducer[0].learning[learningID].subject}</p>
+          <p>{this.props.currentErrandReducer[0].learning[learningID].difficulty}</p>
         </div>
       )
-      // console.log("Learning IDs Subject : ", this.props.currentErrandReducer[0].learning[learningID].subject);
+      
+      /*
+      for(var learningContent in this.props.currentErrandReducer[0].learning[learningID]){
+        console.log("Learning Content: ", this.props.currentErrandReducer[0].learning[learningID].subject)
+        // console.log("Learning Content: ", learningContent)
+      }
+      */
+
+    //console.log("This is prop", prop + " with value: " + this.props.testReducer[0].react.multiple[prop])
     }
+    
 
-    return(
-      <div className="subject_wrapper">
-        {subjectArray}
-      </div>
-    )
 
-  }
-
-  showInfo(learningID){
-    console.log("Learning ID? ", learningID)
+    console.log("-------------------------------")
   }
 
 

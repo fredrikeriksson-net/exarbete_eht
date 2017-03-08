@@ -200,30 +200,23 @@ export class StudentLearningInfo extends Component {
   }
 
   showSubjects(){
-    var subjectArray = [];
+    return  (
+      <div className="outerDiv">
+      {Object.keys(this.props.currentErrandReducer[0].learning[keys]).map(function(key) {
+        
+        return (
+          <div className="innerDiv">
+            <p>{key}</p>
+          </div>
+        )
 
-    for(var learningID in this.props.currentErrandReducer[0].learning){
-      subjectArray.push(
-        <div key={learningID} className="holder">
-          <h2>{this.props.currentErrandReducer[0].learning[learningID].subject}</h2>
-          <p>Svårighet: {this.props.currentErrandReducer[0].learning[learningID].difficulty}</p>
-          <p>Frekvens: {this.props.currentErrandReducer[0].learning[learningID].frequency}</p>
-          <button onClick={this.showInfo.bind(this, learningID)}>Show Learning ID</button>
-        </div>
-      )
-      // console.log("Learning IDs Subject : ", this.props.currentErrandReducer[0].learning[learningID].subject);
-    }
+      })}
 
-    return(
-      <div className="subject_wrapper">
-        {subjectArray}
       </div>
     )
 
-  }
 
-  showInfo(learningID){
-    console.log("Learning ID? ", learningID)
+
   }
 
 

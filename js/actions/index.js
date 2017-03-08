@@ -14,7 +14,54 @@ var config = {
 };
 firebase.initializeApp(config);
 
+// Hämtar hela databasen med userID
+export function fetchUserDatabase(userID){
 
+// Const for Firebase...
+const rootRef = firebase.database().ref().child("users");
+const secure = rootRef.child(userID);
+
+
+	return dispatch => {
+		secure.on("child_added", snap => {
+			dispatch({
+				type: types.FETCH_USER_DATABASE,
+				payload: snap.val()
+			})
+		})
+	};
+
+}
+
+// Hämtar senaster ärendet
+export function currentErrand(userID, currentErrandID){
+
+// Const for Firebase...
+const rootRef = firebase.database().ref().child("users");
+const secure = rootRef.child(userID);
+const school = secure.child("harvard"); // Plocka namn från user.info
+const errand = school.child(currentErrandID)
+	
+	return dispatch => {
+		errand.on("value", snap => {
+			dispatch({
+				type: types.FETCH_CURRENT_ERRAND,
+				payload: snap.val()
+			})
+		})
+	};
+
+}
+
+
+
+// ------------------------------------------------------------------------------------------
+// Lägg till en action för att hämta senaste tillaggda POSTEN (dvs difficulty, freq osv osv)
+// ------------------------------------------------------------------------------------------
+
+
+
+// Lägger till Basinfo
 export function addBasicInfo(userID, teacherName, teacherClass, teacherSubject, studentName, studentAge, studentClass, studentMentor, studentTime){
 	
 const rootRef = firebase.database().ref().child("users");
@@ -40,45 +87,45 @@ const school = secure.child("harvard"); // Plocka namn från user.info
 
 }
 
-export function currentErrand(userID, currentErrandID){
+// Lägger till Inlärnings info
+export function addLearning(userID, currentErrandID, subject, difficulty, frequency, instructionIssue, staminaIssue){
 
-// Const for Firebase...
+
 const rootRef = firebase.database().ref().child("users");
 const secure = rootRef.child(userID);
-const school = secure.child("harvard"); // Plocka namn från user.info
-const errand = school.child(currentErrandID)
+const school = secure.child("harvard");
+const pushID = school.child(currentErrandID)
+const postsRef = pushID.child("learning");
+// const subjectRef = postsRef.child(subject)
+
 	
-	return dispatch => {
-		errand.on("value", snap => {
-			dispatch({
-				type: types.FETCH_CURRENT_ERRAND,
-				payload: snap.val()
-			})
-		})
-	};
-	
+	postsRef.push({
+		subject: subject,
+		difficulty: difficulty,
+		frequency: frequency,
+		instructionIssue: instructionIssue,
+		staminaIssue: staminaIssue
+	});
+
+
+/*
+	console.log("Learning Action triggered");
+	console.log("Current Errand ID: ", currentErrandID)
+	console.log("Valt Ämne: ", subject)
+	console.log("Svårighet vald: ", difficulty)
+	console.log("Frekvens vald: ", frequency)
+	console.log("Instruktioner vald: ", instructionIssue)
+	console.log("Uthållighet vald: ", staminaIssue)
+*/
+
 
 }
 
 
 
-export function fetchUserDatabase(userID){
-
-// Const for Firebase...
-const rootRef = firebase.database().ref().child("users");
-const secure = rootRef.child(userID);
 
 
-	return dispatch => {
-		secure.on("child_added", snap => {
-			dispatch({
-				type: types.FETCH_USER_DATABASE,
-				payload: snap.val()
-			})
-		})
-	};
 
-}
 
 
 export function addErrandNumber(userID){
