@@ -44,11 +44,11 @@ export default class StudentBasicInfo extends Component {
   render() {
 
   const progressWidth = {
-    width: '40%',
+    width: '20%',
   };
 
       return (
-        <div id="basic_wrapper">
+        <div id="basic_page_wrapper">
         
           <header>
             <h2 className="errand_header">Steg 2: Fyll i basinfo</h2>
@@ -56,27 +56,25 @@ export default class StudentBasicInfo extends Component {
           </header>
           <div className="progress_bar" style={progressWidth}></div>
           
-          <div id="teacher_wrapper">
-            <h2>Läraren</h2>
-            <div id="teacher_input_wrapper">
-              <input type="text" id="teacher_name" placeholder="Namn"></input>
-              <input type="text" id="teacher_class" placeholder="Klass"></input>
-              <input type="text" id="teacher_subject" placeholder="Ämne"></input>
+          <div className="basic_info_wrapper">
+            <div id="teacher_wrapper">
+                <h2>Lärarens info:</h2>
+                <input type="text" id="teacher_name" placeholder="För och Efternamn"></input>
+                <input type="text" id="teacher_class" placeholder="Klass"></input>
+                <input type="text" id="teacher_subject" placeholder="Ämne"></input>
+            </div>
+  
+            <div id="student_wrapper">
+                <h2>Elevens info:</h2>
+                <input type="text" id="student_name" placeholder="För och Efternamn"></input>
+                <input type="text" id="student_age" placeholder="Ålder"></input>
+                <input type="text" id="student_class" placeholder="Klass"></input>
+                <input type="text" id="student_mentor" placeholder="Mentor"></input>
+                <input type="text" id="student_time" placeholder="Tid på Mentepontom"></input>
             </div>
           </div>
 
-          <div id="student_wrapper">
-            <h2>Eleven</h2>
-            <div id="student_input_wrapper">
-              <input type="text" id="student_name" placeholder="Namn"></input>
-              <input type="text" id="student_age" placeholder="Ålder"></input>
-              <input type="text" id="student_class" placeholder="Klass"></input>
-              <input type="text" id="student_mentor" placeholder="Mentor"></input>
-              <input type="text" id="student_time" placeholder="Tid på Mentepontom"></input>
-            </div>
-          </div>
-
-          <Link to="/student-learning-info" onClick={this.postBasicInfo}>Nästa</Link>
+          <Link to="/student-learning-info" className="next_step" onClick={this.postBasicInfo}>Nästa steg</Link>
 
         </div>
       );

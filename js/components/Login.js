@@ -81,7 +81,7 @@ export default class Login extends Component {
   render() {
     return (
       <div className="wrapper">
-        <img className="logo" src="../img/logo.png" />
+        <img className="logo" src="../img/logo.svg" />
         <div className="login_container">
           <p className="input">E-mail</p>
             <input id="txtEmail" type="email" placeholder="&#9993;" />

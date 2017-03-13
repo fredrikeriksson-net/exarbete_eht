@@ -3,6 +3,13 @@ import NormalizeCSS from "../css/normalize.css";
 import globalCss from "../css/00-global.css";
 import LoginCss from "../css/01-login.css";
 import ErrandCss from "../css/02-errandOptions.css";
+import BasicInfoCss from "../css/03-basicInfo.css";
+import LearningCSS from "../css/04-learningInfo.css";
+import BehaviorCSS from "../css/05-behaviorInfo.css";
+import FeelingInfoCSS from "../css/06-feelingsInfo.css";
+import SummaryCSS from "../css/07-summary.css";
+
+
 // import testCss from "../css/01-test.css";
 
 // React 
@@ -36,11 +43,10 @@ import Login from "./components/Login";
 import ErrandOptions from "./components/Errand_Options";
 import StudentBasicInfo from "./components/Student_BasicInfo";
 import StudentLearningInfo from "./containers/Student_LearningInfo";
+import StudentBehaviorInfo from "./containers/Student_BehaviorInfo";
+import StudentFeelingsInfo from "./containers/Student_FeelingsInfo";
+import StudentSummary from "./containers/Student_Summary";
 
-
-// TEST -------
-import TestFirebase from "./containers/firebase_test";
-// ------------
 
 // Constants 
 const logger = createLogger(); // Logger
@@ -56,11 +62,9 @@ ReactDOM.render(
 				<Route path='errand-options' component={ErrandOptions} />
 				<Route path='student-basic-info' component={StudentBasicInfo} />
 				<Route path='student-learning-info' component={StudentLearningInfo} />
-
-
-
-
-				<Route path='test-route' component={TestFirebase} />
+				<Route path='student-behavior-info' component={StudentBehaviorInfo} />
+				<Route path='student-feelings-info' component={StudentFeelingsInfo} />
+				<Route path='student-summary' component={StudentSummary} />
 		</Router>
 	</Provider>,
 	app

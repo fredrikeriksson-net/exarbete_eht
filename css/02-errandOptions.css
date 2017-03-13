@@ -1,5 +1,5 @@
 /*
-	EHT - Overview - Login
+	EHT - Overview - Errand Options
 	-------------------------------------------
 	Typography
 	Page Structure
@@ -70,6 +70,11 @@ a.log_out:hover {
 
 
 /* Content & Media */
+
+img.option {
+	height: 102px;
+	width: auto;	
+}
 
 
 /* Misc */

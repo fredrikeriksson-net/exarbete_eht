@@ -53,14 +53,6 @@ const errand = school.child(currentErrandID)
 
 }
 
-
-
-// ------------------------------------------------------------------------------------------
-// Lägg till en action för att hämta senaste tillaggda POSTEN (dvs difficulty, freq osv osv)
-// ------------------------------------------------------------------------------------------
-
-
-
 // Lägger till Basinfo
 export function addBasicInfo(userID, teacherName, teacherClass, teacherSubject, studentName, studentAge, studentClass, studentMentor, studentTime){
 	
@@ -88,46 +80,111 @@ const school = secure.child("harvard"); // Plocka namn från user.info
 }
 
 // Lägger till Inlärnings info
-export function addLearning(userID, currentErrandID, subject, difficulty, frequency, instructionIssue, staminaIssue){
-
+export function addLearning(userID, currentErrandID, subject, difficulty, frequency, onsetIssue, staminaIssue, closingIssue, slowWorkFlowIssue, groupInstructionIssue, individualInstructionIssue, loseTrackIssue, readWriteIssue, followInstructionsIssue, amountsIssue, strategiesIssue, numbersIssue){
 
 const rootRef = firebase.database().ref().child("users");
 const secure = rootRef.child(userID);
 const school = secure.child("harvard");
 const pushID = school.child(currentErrandID)
 const postsRef = pushID.child("learning");
-// const subjectRef = postsRef.child(subject)
-
 	
 	postsRef.push({
 		subject: subject,
 		difficulty: difficulty,
 		frequency: frequency,
-		instructionIssue: instructionIssue,
-		staminaIssue: staminaIssue
+		onsetIssue: onsetIssue,
+		staminaIssue: staminaIssue,
+		closingIssue: closingIssue,
+		slowWorkFlowIssue: slowWorkFlowIssue,
+		groupInstructionIssue: groupInstructionIssue,
+		individualInstructionIssue: individualInstructionIssue,
+		loseTrackIssue: loseTrackIssue,
+		readWriteIssue: readWriteIssue,
+		followInstructionsIssue: followInstructionsIssue,
+		amountsIssue: amountsIssue,
+		strategiesIssue: strategiesIssue,
+		numbersIssue: numbersIssue
 	});
-
-
-/*
-	console.log("Learning Action triggered");
-	console.log("Current Errand ID: ", currentErrandID)
-	console.log("Valt Ämne: ", subject)
-	console.log("Svårighet vald: ", difficulty)
-	console.log("Frekvens vald: ", frequency)
-	console.log("Instruktioner vald: ", instructionIssue)
-	console.log("Uthållighet vald: ", staminaIssue)
-*/
-
 
 }
 
+// Tar bort ett tillagt ämne
+export function deleteSelectedSubject(userID, currentErrandID, learningID){
 
+const rootRef = firebase.database().ref().child("users");
+const secure = rootRef.child(userID);
+const school = secure.child("harvard");
+const pushID = school.child(currentErrandID)
+const postsRef = pushID.child("learning");
 
+	postsRef.child(learningID).remove();
 
+}
 
+// Lägg till beteende info
+export function addBehavior(userID, currentErrandID, behaviorValue, rulesIssue, rulesFrequency, verbalIssue, verbalFrequency, aggressiveIssue, aggressiveFrequency, seclusiveIssue, seclusiveFrequency){
+const rootRef = firebase.database().ref().child("users");
+const secure = rootRef.child(userID);
+const school = secure.child("harvard");
+const pushID = school.child(currentErrandID)
+const postsRef = pushID.child("behavior");
 
+	postsRef.push({
+		behaviorValue: behaviorValue,
+		rulesIssue: rulesIssue,
+		rulesFrequency: rulesFrequency,
+		verbalIssue: verbalIssue,
+		verbalFrequency: verbalFrequency,
+		aggressiveIssue: aggressiveIssue,
+		aggressiveFrequency: aggressiveFrequency,
+		seclusiveIssue: seclusiveIssue,
+		seclusiveFrequency: seclusiveFrequency
+	});
 
+}
 
+// Tar bort ett tillagt beteende
+export function deleteSelectedBehavior(userID, currentErrandID, behaviorID){
+
+const rootRef = firebase.database().ref().child("users");
+const secure = rootRef.child(userID);
+const school = secure.child("harvard");
+const pushID = school.child(currentErrandID)
+const postsRef = pushID.child("behavior");
+
+postsRef.child(behaviorID).remove();
+
+}
+
+export function addFeelings(userID, currentErrandID, rage, concern, sad, nervous, scared, trust, fail, reports, tests, wrong, difficulties, issueFrequency, suffer, peers, schoolwork, load){
+const rootRef = firebase.database().ref().child("users");
+const secure = rootRef.child(userID);
+const school = secure.child("harvard");
+const pushID = school.child(currentErrandID)
+const postsRef = pushID.child("feelings");
+
+	postsRef.push({
+		rage: rage,
+		concern: concern,
+		sad: sad,
+		nervous: nervous,
+		scared: scared,
+		trust: trust,
+		fail: fail,
+		reports: reports,
+		tests: tests,
+		wrong: wrong,
+		difficulties: difficulties,
+		issueFrequency: issueFrequency,
+		suffer: suffer,
+		peers: peers,
+		schoolwork: schoolwork,
+		load: load
+	});
+
+}
+
+// Test här nedan!!!!
 export function addErrandNumber(userID){
 
 const rootRef = firebase.database().ref().child("users");

@@ -1,0 +1,97 @@
+/*
+	EHT - Overview - Basic Info
+	-------------------------------------------
+	Typography
+	Page Structure
+	Content & Media
+	Misc
+---------------------------------------------
+*/
+
+
+/* Typography */
+.next_step {
+	display: block;
+	color: #FFF;
+	background-color: #32c854;
+	border: 1px solid #2fac4d;
+	padding: 15px;
+	width: 25%;
+	text-align: center;
+	text-decoration: none;
+	/* margin: 10px auto; */
+	margin-left: 20px;
+	border-radius: 3px;
+}
+
+.next_step:hover {
+	background-color: #28a745;
+}
+
+
+/* Page Structure */
+.basic_info_wrapper {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	margin-top: 100px;
+	margin-left: 20px;
+}
+
+#teacher_wrapper, #student_wrapper {
+	border: 1px solid #d8dee2;
+	background-color: #FFF;
+	width: 400px;
+	padding: 20px;
+	border-radius: 5px;
+	margin-top: 15px;
+	margin-bottom: 30px;
+	margin-right: 20px;
+}
+
+
+
+/* Content & Media */
+
+.basic_info_wrapper input {
+	border: 1px solid #d8dee2;
+	margin-bottom: 20px;
+}
+
+.basic_info_wrapper input:focus {
+	border: 1px solid #999;
+	margin-bottom: 20px;
+}
+
+/* Teacher Inputs */
+#teacher_class {
+	width: 40%;
+	margin-right: 5%;
+}
+
+#teacher_subject {
+	width: 55%;
+}
+
+/* Student Inputs */
+#student_age {
+	width: 40%;
+	margin-right: 5%;
+}
+
+#student_class {
+	width: 55%;
+}
+
+#student_mentor {
+	width: 40%;
+	margin-right: 5%;
+}
+
+#student_time {
+	width: 55%;
+}
+
+
+
+/* Misc */

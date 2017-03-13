@@ -11,6 +11,7 @@ import { connect } from "react-redux";
 import { currentErrand } from "../actions/index.js";
 import { fetchUserDatabase } from "../actions/index.js";
 import { addLearning } from "../actions/index.js";
+import { deleteSelectedSubject } from "../actions/index.js";
 
 // Firebase 
 import * as firebase from "firebase";
@@ -26,16 +27,39 @@ export class StudentLearningInfo extends Component {
     // BINDINGS
     this.handleDifficultyChange = this.handleDifficultyChange.bind(this);
     this.handleFrequencyChange = this.handleFrequencyChange.bind(this);
-    this.handleinstructionIssue = this.handleinstructionIssue.bind(this);
+    
+    this.handleOnsetIssue = this.handleOnsetIssue.bind(this);
     this.handleStaminaIssue = this.handleStaminaIssue.bind(this);
+    this.handleClosingIssue = this.handleClosingIssue.bind(this);
+    this.handleSlowWorkFlowIssue = this.handleSlowWorkFlowIssue.bind(this);
+    this.handleGroupInstructionIssue = this.handleGroupInstructionIssue.bind(this);
+    this.handleIndividualInstructionIssue = this.handleIndividualInstructionIssue.bind(this);
+    this.handleLoseTrackIssueIssue = this.handleLoseTrackIssueIssue.bind(this);
+    this.handleReadWriteIssue = this.handleReadWriteIssue.bind(this);
+    this.handleFollowInstructionsIssue = this.handleFollowInstructionsIssue.bind(this);
+    this.handleAmountsIssue = this.handleAmountsIssue.bind(this);
+    this.handleStrategiesIssue = this.handleStrategiesIssue.bind(this);
+    this.handleNumbersIssue = this.handleNumbersIssue.bind(this);
 
     this.state = {
       learningInput: "hide",
       subjectValue: "",
       selectedDifficulty: "1",
       selectedFrequency: "1",
-      instructionIssue: false,
-      staminaIssue: false
+      
+      onsetIssue: false,
+      staminaIssue: false,
+      closingIssue: false,
+      slowWorkFlowIssue: false,
+      groupInstructionIssue: false,
+      individualInstructionIssue: false,
+      loseTrackIssue: false,
+      readWriteIssue: false,
+      followInstructionsIssue: false,
+      amountsIssue: false,
+      strategiesIssue: false,
+      numbersIssue: false
+
     }
   }
 
@@ -61,76 +85,182 @@ export class StudentLearningInfo extends Component {
   }
 
   logOut(){
-  firebase.auth().signOut()
-  location.reload();
+    firebase.auth().signOut()
+    location.reload();
   }
 
   showLearning(){
     let subjectValue = document.getElementById("subject");
-    this.setState({subjectValue: subjectValue.value}) // Set subject in state for header
+    this.setState({subjectValue: subjectValue.value})
     this.setState({learningInput:"show"})
-    // this.postLearning();
   }
 
 
   postLearning(){
-    var string = "test";
 
       return (
-        <div>
+        <div className="post_learning_container">
 
           <h2>{this.state.subjectValue}</h2>
     
           <form onSubmit={this.handleFormSubmit.bind(this)}>
-            <div className="radio">
-              <label>
-                <input type="radio" value={"1"} checked={this.state.selectedDifficulty === "1"} onChange={this.handleDifficultyChange} />
-                1
-              </label>
+              <p className="bold">Hur är barnets måluppfyllnad i ämnet?</p>
+              <p className="info"><strong>1:</strong> Ligger tydligt och klart efter, är långt ifrån målen</p>
+              <p className="info"><strong>2:</strong> Ligger efter behöver extra stöd, är dock nära att nå målen </p>
+              <p className="info"><strong>3:</strong> Ligger något efter men når antagligen målen</p>
+              <p className="info"><strong>4:</strong> Är i nivå med snittet i klassen</p>
+              <p className="info"><strong>5:</strong> Högpresterande</p>
+              <div className="difficulty_wrapper">
+                <label className="difficulty_1">
+                  <input type="radio" value={"1"} checked={this.state.selectedDifficulty === "1"} onChange={this.handleDifficultyChange} />
+                  <span></span>
+                </label>
+                <label className="difficulty_2">
+                  <input type="radio" value={"2"} checked={this.state.selectedDifficulty === "2"} onChange={this.handleDifficultyChange} />
+                  <span></span>
+                </label>
+                <label className="difficulty_3">
+                  <input type="radio" value={"3"} checked={this.state.selectedDifficulty === "3"} onChange={this.handleDifficultyChange} />
+                  <span></span>
+                </label>
+                <label className="difficulty_4">
+                  <input type="radio" value={"4"} checked={this.state.selectedDifficulty === "4"} onChange={this.handleDifficultyChange} />
+                  <span></span>
+                </label>
+                <label className="difficulty_5">
+                  <input type="radio" value={"5"} checked={this.state.selectedDifficulty === "5"} onChange={this.handleDifficultyChange} />
+                  <span></span>
+                </label>
+              </div>
+
+              <div className="issue_container">
+                <p className="bold">Inlärningssvårigheter:</p>
+
+              <div className="issue_divider">
+              
+              <div className="left">
+                <div className="difficulty_checkbox">
+                  <p className="no_padding">Ingångsättning</p>
+                  <label className="checkbox">
+                    <input type="checkbox" value={this.state.onsetIssue} checked={this.state.onsetIssue} onChange={this.handleOnsetIssue} />
+                    <span></span>
+                  </label>
+                </div>
+
+                <div className="difficulty_checkbox">
+                  <p className="no_padding">Uthållighet</p>
+                  <label className="checkbox">
+                    <input type="checkbox" value={this.state.staminaIssue} checked={this.state.staminaIssue} onChange={this.handleStaminaIssue} />
+                    <span></span>
+                  </label>
+                </div>
+
+                <div className="difficulty_checkbox">
+                  <p className="no_padding">Avslut</p>
+                  <label className="checkbox">
+                    <input type="checkbox" value={this.state.closingIssue} checked={this.state.closingIssue} onChange={this.handleClosingIssue} />
+                    <span></span>
+                  </label>
+                </div>
+
+                <div className="difficulty_checkbox">
+                  <p className="no_padding">Långsam arbetsgång</p>
+                  <label className="checkbox">
+                    <input type="checkbox" value={this.state.slowWorkFlowIssue} checked={this.state.slowWorkFlowIssue} onChange={this.handleSlowWorkFlowIssue} />
+                    <span></span>
+                  </label>
+                </div>
+
+                <div className="difficulty_checkbox">
+                  <p className="no_padding">Svårt att förstå gruppinstruktioner</p>
+                  <label className="checkbox">
+                    <input type="checkbox" value={this.state.groupInstructionIssue} checked={this.state.groupInstructionIssue} onChange={this.handleGroupInstructionIssue} />
+                    <span></span>
+                  </label>
+                </div>                
+
+                <div className="difficulty_checkbox">
+                  <p className="no_padding">Svårt att förstå individuella instruktioner</p>
+                  <label className="checkbox">
+                    <input type="checkbox" value={this.state.individualInstructionIssue} checked={this.state.individualInstructionIssue} onChange={this.handleIndividualInstructionIssue} />
+                    <span></span>
+                  </label>
+                </div>
+              </div>
+
+
+              <div className="right">
+                <div className="difficulty_checkbox">
+                  <p className="no_padding">Kommer av sig under arbetet</p>
+                  <label className="checkbox">
+                    <input type="checkbox" value={this.state.loseTrackIssue} checked={this.state.loseTrackIssue} onChange={this.handleLoseTrackIssueIssue} />
+                    <span></span>
+                  </label>
+                </div>
+
+                <div className="difficulty_checkbox">
+                  <p className="no_padding">Läs och skriv svårigheter</p>
+                  <label className="checkbox">
+                    <input type="checkbox" value={this.state.readWriteIssue} checked={this.state.readWriteIssue} onChange={this.handleReadWriteIssue} />
+                    <span></span>
+                  </label>
+                </div>
+
+                <div className="difficulty_checkbox">
+                  <p className="no_padding">Svårt att följa instruktioner</p>
+                  <label className="checkbox">
+                    <input type="checkbox" value={this.state.followInstructionsIssue} checked={this.state.followInstructionsIssue} onChange={this.handleFollowInstructionsIssue} />
+                    <span></span>
+                  </label>
+                </div>
+
+                <div className="difficulty_checkbox">
+                  <p className="no_padding">Svårt med mängder</p>
+                  <label className="checkbox">
+                    <input type="checkbox" value={this.state.amountsIssue} checked={this.state.amountsIssue} onChange={this.handleAmountsIssue} />
+                    <span></span>
+                  </label>
+                </div>
+
+                <div className="difficulty_checkbox">
+                  <p className="no_padding">Svårt att använda sig av strategier</p>
+                  <label className="checkbox">
+                    <input type="checkbox" value={this.state.strategiesIssue} checked={this.state.strategiesIssue} onChange={this.handleStrategiesIssue} />
+                    <span></span>
+                  </label>
+                </div>
+
+                <div className="difficulty_checkbox">
+                  <p className="no_padding">Svårt med taluppfattning (10 systemet, addition, subtraktion)</p>
+                  <label className="checkbox">
+                    <input type="checkbox" value={this.state.numbersIssue} checked={this.state.numbersIssue} onChange={this.handleNumbersIssue} />
+                    <span></span>
+                  </label>
+                </div>
+
+              </div>
             </div>
-            <div className="radio">
-              <label>
-                <input type="radio" value={"2"} checked={this.state.selectedDifficulty === "2"} onChange={this.handleDifficultyChange} />
-                2
-              </label>
-            </div>
-            <div className="radio">
-              <label>
-                <input type="radio" value={"3"} checked={this.state.selectedDifficulty === "3"} onChange={this.handleDifficultyChange} />
-                3
-              </label>
-            </div>
-            <div className="radio">
-              <label>
-                <input type="radio" value={"4"} checked={this.state.selectedDifficulty === "4"} onChange={this.handleDifficultyChange} />
-                4
-              </label>
-            </div>
-            <div className="radio">
-              <label>
-                <input type="radio" value={"5"} checked={this.state.selectedDifficulty === "5"} onChange={this.handleDifficultyChange} />
-                5
-              </label>
-            </div>
-            <div className="range">
-              <label>
-                <input type="range" value={this.state.selectedFrequency} min="1" max="10" step="1" onChange={this.handleFrequencyChange} />
-                <p>{this.state.selectedFrequency}</p>
-                Frekvens
-              </label>
-            </div>
-            <div className="checkbox">
-              <label>
-                <input type="checkbox" value={this.state.instructionIssue} checked={this.state.instructionIssue} onChange={this.handleinstructionIssue} />
-                Förstå Instruktioner
-              </label>
-            </div>
-            <div className="checkbox">
-              <label>
-                <input type="checkbox" value={this.state.staminaIssue} checked={this.state.staminaIssue} onChange={this.handleStaminaIssue} />
-                Uthållighet
-              </label>
-            </div>
+
+
+              </div>
+
+              <div>
+                <p className="bold">Hur ofta sker inlärningssvårigheterna?</p>
+                <p className="info"><strong>1</strong> = 1gång i veckan eller färre</p>
+                <p className="info"><strong>2</strong> = 2-3 gånger i veckan</p>
+                <p className="info"><strong>3</strong> = 3-5gånger i veckan</p>
+                <p className="info"><strong>4</strong> = 5-10 gånger i veckan</p>
+                <p className="info"><strong>5</strong> = 10 gånger och uppåt i veckan</p> 
+                
+                <div className="difficulty_wrapper">
+                  <input type="range" className="range" value={this.state.selectedFrequency} min="1" max="5" step="1" onChange={this.handleFrequencyChange} />
+                  <p>{this.state.selectedFrequency}</p>
+                </div>
+              </div>
+
+
+
+
 
 
             <button type="submit">Lägg till</button>
@@ -150,12 +280,12 @@ export class StudentLearningInfo extends Component {
     this.setState({selectedFrequency: changeEvent.target.value});
   }
 
-  handleinstructionIssue(changeEvent){
-    if(this.state.staminaIssue === false){
-      this.setState({instructionIssue: true})
+  handleOnsetIssue(changeEvent){
+    if(this.state.onsetIssue === false){
+      this.setState({onsetIssue: true})
     }
     else {
-      this.setState({instructionIssue: false})
+      this.setState({onsetIssue: false})
     }
   }
 
@@ -168,6 +298,96 @@ export class StudentLearningInfo extends Component {
     }
   }
 
+  handleClosingIssue(changeEvent){
+    if(this.state.closingIssue === false){
+      this.setState({closingIssue: true})
+    }
+    else {
+      this.setState({closingIssue: false})
+    }
+  }
+
+  handleSlowWorkFlowIssue(changeEvent){
+    if(this.state.slowWorkFlowIssue === false){
+      this.setState({slowWorkFlowIssue: true})
+    }
+    else {
+      this.setState({slowWorkFlowIssue: false})
+    }
+  }
+
+  handleGroupInstructionIssue(changeEvent){
+    if(this.state.groupInstructionIssue === false){
+      this.setState({groupInstructionIssue: true})
+    }
+    else {
+      this.setState({groupInstructionIssue: false})
+    }
+  }  
+
+  handleIndividualInstructionIssue(changeEvent){
+    if(this.state.individualInstructionIssue === false){
+      this.setState({individualInstructionIssue: true})
+    }
+    else {
+      this.setState({individualInstructionIssue: false})
+    }
+  }  
+
+  handleLoseTrackIssueIssue(changeEvent){
+    if(this.state.loseTrackIssue === false){
+      this.setState({loseTrackIssue: true})
+    }
+    else {
+      this.setState({loseTrackIssue: false})
+    }
+  } 
+
+  handleReadWriteIssue(changeEvent){
+    if(this.state.readWriteIssue === false){
+      this.setState({readWriteIssue: true})
+    }
+    else {
+      this.setState({readWriteIssue: false})
+    }
+  } 
+
+  handleFollowInstructionsIssue(changeEvent){
+    if(this.state.followInstructionsIssue === false){
+      this.setState({followInstructionsIssue: true})
+    }
+    else {
+      this.setState({followInstructionsIssue: false})
+    }
+  }
+
+  handleAmountsIssue(changeEvent){
+    if(this.state.amountsIssue === false){
+      this.setState({amountsIssue: true})
+    }
+    else {
+      this.setState({amountsIssue: false})
+    }
+  } 
+
+  handleStrategiesIssue(changeEvent){
+    if(this.state.strategiesIssue === false){
+      this.setState({strategiesIssue: true})
+    }
+    else {
+      this.setState({strategiesIssue: false})
+    }
+  } 
+
+  handleNumbersIssue(changeEvent){
+    if(this.state.numbersIssue === false){
+      this.setState({numbersIssue: true})
+    }
+    else {
+      this.setState({numbersIssue: false})
+    }
+  } 
+
   handleFormSubmit(formSubmitEvent){
     formSubmitEvent.preventDefault();
 
@@ -176,54 +396,95 @@ export class StudentLearningInfo extends Component {
         for (var currentErrandID in this.props.userDatabase[0]);
       }
     
-    // console.log("Errand ID: ", currentErrandID)
-    // console.log("Valt Ämne: ", this.state.subjectValue);
-    // console.log("Svårighet vald: ", this.state.selectedDifficulty);
-    // console.log("Frekvens vald: ", this.state.selectedFrequency);
-    // console.log("Instruktioner vald: ", this.state.instructionIssue);
-    // console.log("Uthållighet vald: ", this.state.staminaIssue);
     this.setState({learningInput:"hide"})
 
     // addLearning action
-    addLearning(user.uid, currentErrandID, this.state.subjectValue, this.state.selectedDifficulty, this.state.selectedFrequency, this.state.instructionIssue, this.state.staminaIssue);
+    addLearning(user.uid, currentErrandID, this.state.subjectValue, this.state.selectedDifficulty, this.state.selectedFrequency, this.state.onsetIssue, this.state.staminaIssue, this.state.closingIssue, this.state.slowWorkFlowIssue, this.state.groupInstructionIssue, this.state.individualInstructionIssue, this.state.loseTrackIssue, this.state.readWriteIssue, this.state.followInstructionsIssue, this.state.amountsIssue, this.state.strategiesIssue, this.state.numbersIssue);
 
     })
-
-
   }
 
   clearForm(){
     this.setState({selectedDifficulty: "1"});
     this.setState({selectedFrequency: "1"});
-    this.setState({instructionIssue: false});
+    this.setState({onsetIssue: false});
     this.setState({staminaIssue: false});
+    this.setState({closingIssue: false});
+    this.setState({slowWorkFlowIssue: false});
+    this.setState({groupInstructionIssue: false});
+    this.setState({individualInstructionIssue: false});
+    this.setState({loseTrackIssue: false});
+    this.setState({readWriteIssue: false});
+    this.setState({followInstructionsIssue: false});
+    this.setState({amountsIssue: false});
+    this.setState({strategiesIssue: false});
+    this.setState({numbersIssue: false});
   }
+
 
   showSubjects(){
     var subjectArray = [];
 
     for(var learningID in this.props.currentErrandReducer[0].learning){
+
       subjectArray.push(
-        <div key={learningID} className="holder">
+        <div key={learningID} className="show_learning_container">
+
           <h2>{this.props.currentErrandReducer[0].learning[learningID].subject}</h2>
           <p>Svårighet: {this.props.currentErrandReducer[0].learning[learningID].difficulty}</p>
           <p>Frekvens: {this.props.currentErrandReducer[0].learning[learningID].frequency}</p>
-          <button onClick={this.showInfo.bind(this, learningID)}>Show Learning ID</button>
+          <p>Områden:</p>
+          {this.props.currentErrandReducer[0].learning[learningID].onsetIssue === true ? <p>Ingångsättning</p> : <p id="hide"></p>}
+          {this.props.currentErrandReducer[0].learning[learningID].staminaIssue === true ? <p>Uthållighet</p> : <p id="hide"></p>}
+          {this.props.currentErrandReducer[0].learning[learningID].closingIssue === true ? <p>Avslut</p> : <p id="hide"></p>}
+          {this.props.currentErrandReducer[0].learning[learningID].slowWorkFlowIssue === true ? <p>Långsam arbetsgång</p> : <p id="hide"></p>}
+          {this.props.currentErrandReducer[0].learning[learningID].groupInstructionIssue === true ? <p>Svårt att förstå gruppinstruktioner</p> : <p id="hide"></p>}
+          {this.props.currentErrandReducer[0].learning[learningID].individualInstructionIssue === true ? <p>Svårt att förstå individuella instruktioner</p> : <p id="hide"></p>}
+          {this.props.currentErrandReducer[0].learning[learningID].loseTrackIssue === true ? <p>Kommer av sig under arbetet</p> : <p id="hide"></p>}
+          {this.props.currentErrandReducer[0].learning[learningID].readWriteIssue === true ? <p>Läs och skriv svårigheter</p> : <p id="hide"></p>}
+          {this.props.currentErrandReducer[0].learning[learningID].followInstructionsIssue === true ? <p>Svårt att följa instruktioner</p> : <p id="hide"></p>}
+          {this.props.currentErrandReducer[0].learning[learningID].amountsIssue === true ? <p>Svårt med mängder</p> : <p id="hide"></p>}
+          {this.props.currentErrandReducer[0].learning[learningID].strategiesIssue === true ? <p>Använda sig av strategier</p> : <p id="hide"></p>}
+          {this.props.currentErrandReducer[0].learning[learningID].numbersIssue === true ? <p>Svårt med taluppfattning (10 systemet, addition, subtraktion)</p> : <p id="hide"></p>}
+
+          {this.props.currentErrandReducer[0].learning[learningID].onsetIssue === false &&
+          this.props.currentErrandReducer[0].learning[learningID].staminaIssue === false &&
+          this.props.currentErrandReducer[0].learning[learningID].closingIssue === false &&
+          this.props.currentErrandReducer[0].learning[learningID].slowWorkFlowIssue === false &&
+          this.props.currentErrandReducer[0].learning[learningID].groupInstructionIssue === false &&
+          this.props.currentErrandReducer[0].learning[learningID].individualInstructionIssue === false &&
+          this.props.currentErrandReducer[0].learning[learningID].loseTrackIssue === false &&
+          this.props.currentErrandReducer[0].learning[learningID].readWriteIssue === false &&
+          this.props.currentErrandReducer[0].learning[learningID].followInstructionsIssue === false &&
+          this.props.currentErrandReducer[0].learning[learningID].amountsIssue === false &&
+          this.props.currentErrandReducer[0].learning[learningID].strategiesIssue === false &&
+          this.props.currentErrandReducer[0].learning[learningID].numbersIssue === false ? <p>Inga områden valda</p> : <p id="hide"></p>}
+          <button className="delete" onClick={this.delSubject.bind(this, learningID)}>Radera ämne</button>
         </div>
       )
-      // console.log("Learning IDs Subject : ", this.props.currentErrandReducer[0].learning[learningID].subject);
+
     }
 
     return(
       <div className="subject_wrapper">
         {subjectArray}
+        <Link to="/student-behavior-info" className="next_step">Nästa Steg</Link>
       </div>
     )
 
   }
 
-  showInfo(learningID){
-    console.log("Learning ID? ", learningID)
+
+  delSubject(learningID){
+
+    firebase.auth().onAuthStateChanged(user => {
+      if(user){
+        for (var currentErrandID in this.props.userDatabase[0]);
+      }
+
+    deleteSelectedSubject(user.uid, currentErrandID, learningID);
+
+    })
   }
 
 
@@ -233,40 +494,60 @@ export class StudentLearningInfo extends Component {
   render() {
 
     const progressWidth = {
-      width: '60%',
+      width: '40%',
     };
 
     if(this.props.currentErrandReducer[0]) {
       return (
-        <div id="learning_wrapper">
+        <div id="learning_page_wrapper">
 
         <header>
           <h2 className="errand_header">Steg 3: Inlärning</h2>
           <Link to="/" onClick={this.logOut} className="log_out">Logga ut</Link>
         </header>
         <div className="progress_bar" style={progressWidth}></div>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <div id="teacher_wrapper">
+
+          <div className="learning_info_wrapper">
+            
+            <div className="add_subjects_wrapper">
               <select id="subject" onClick={this.clearForm.bind(this)} onChange={this.showLearning.bind(this)}>
-                <option value="test">Välj Ämne:</option>
-                <option value="Svenska">Svenska</option>
-                <option value="Matematik">Matematik</option>
+                <option selected disabled>Välj ett ämne att lägga till:</option>
+                <option value="Bild">Bild</option>
                 <option value="Biologi">Biologi</option>
+                <option value="Engelska">Engelska</option>
+                <option value="Fysik">Fysik</option>
+                <option value="Geografi">Geografi</option>
+                <option value="Hemkunskap">Hemkunskap</option>
+                <option value="Historia">Historia</option>
+                <option value="Idrott">Idrott</option>
                 <option value="Kemi">Kemi</option>
+                <option value="Matematik">Matematik</option>
+                <option value="Moderna språk">Moderna språk</option>
+                <option value="Musik">Musik</option>
+                <option value="NO">NO</option>
+                <option value="Religionskunskap">Religionskunskap</option>
+                <option value="SO">SO</option>
+                <option value="Samhällskunskap">Samhällskunskap</option>
+                <option value="Slöjd">Slöjd</option>
+                <option value="Svenska">Svenska</option>
+                <option value="Teknik">Teknik</option>
               </select>
-            </div>
-  
-            <div id={this.state.learningInput}>
-  
-              <div>{this.postLearning()}</div>
-              
+
+
+              <div id={this.state.learningInput}>
+                {this.postLearning()}
+              </div>
+
+
             </div>
 
-            <div>{this.showSubjects()}</div>
+            <div className="added_subjects_wrapper">
+              {this.showSubjects()}
+            </div>
+
+          </div>
+
+            
   
         </div>
       );

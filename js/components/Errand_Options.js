@@ -36,7 +36,7 @@ logOut(){
 render(){
 	
 	const progressWidth = {
-  	width: '20%',
+  	width: '10%',
 	};
 
 	return(
@@ -53,12 +53,12 @@ render(){
 				<div className="options_wrapper">
 					
 					<div className="errand_container" onClick={this.studentErrand}>
-						<img src="../img/student.png"/>
+						<img className="option" src="../img/choose_student.svg"/>
 						<p>Enskild elev</p>
 					</div>
 						
 					<div className="errand_container" onClick={this.groupErrand}>
-						<img src="../img/group.png"/>
+						<img className="option" src="../img/choose_group.svg"/>
 						<p>Grupp</p>
 					</div>
 	

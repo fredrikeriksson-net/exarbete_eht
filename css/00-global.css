@@ -12,6 +12,28 @@
 /* Typography */
 p {
 	font-family: "Open Sans";
+	font-size: 13px;
+}
+
+p.bold {
+	font-weight: 700;
+	padding: 0;
+	margin-bottom: 5px;
+}
+
+p.info {
+	font-size: 12px;
+	padding: 0;
+}
+
+p.no_padding {
+	padding-left: 0;
+}
+
+h2 {
+	font-family: "Open Sans";
+	font-size: 18px;
+	color: #666;
 }
 
 /* Page Structure */
@@ -69,5 +91,31 @@ header {
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+/*  Radio button */
+.radio input {
+	display: none;
+}
+
+.radio span {
+	width: 20px;
+	height: 20px;
+	display: block;
+	background: url("/img/radiobutton_unchecked.svg");
+	background-repeat: no-repeat;
+	background-size: 20px 20px;
+	padding: 5px;
+	margin: 5px auto;
+}
+
+.radio input:checked + span {
+	width: 20px;
+	height: 20px;
+	display: block;
+	background: url("/img/radiobutton.svg");
+	background-repeat: no-repeat;
+	background-size: 20px 20px;
+	padding: 5px;
 }
 
