@@ -79,8 +79,10 @@ export class StudentFeelingsInfo extends Component {
           // Get current errand data
           setTimeout( () => {
             for (var currentErrandID in this.props.userDatabase[0]);
-            this.props.currentErrand(user.uid, currentErrandID);
+            this.props.currentErrand(user.uid, currentErrandID, user.displayName);
           }, 2000);
+
+          scroll(0,0)
           
         }
   
@@ -105,7 +107,7 @@ export class StudentFeelingsInfo extends Component {
       }
     
     // addFeelings action
-    addFeelings(user.uid, currentErrandID, this.state.rage, this.state.concern, this.state.sad, this.state.nervous, this.state.scared, this.state.trust, this.state.fail, this.state.reports, this.state.tests, this.state.wrong, this.state.difficulties, this.state.issueFrequency, this.state.suffer, this.state.peers, this.state.schoolwork, this.state.load);
+    addFeelings(user.uid, currentErrandID, user.displayName, this.state.rage, this.state.concern, this.state.sad, this.state.nervous, this.state.scared, this.state.trust, this.state.fail, this.state.reports, this.state.tests, this.state.wrong, this.state.difficulties, this.state.issueFrequency, this.state.suffer, this.state.peers, this.state.schoolwork, this.state.load);
 
     })
   }
@@ -197,13 +199,13 @@ export class StudentFeelingsInfo extends Component {
         <div id="feelings_wrapper">
 
         <header>
-          <h2 className="errand_header">Steg 5: Styrkor och svårigheter</h2>
-          <Link to="/" onClick={this.logOut} className="log_out">Logga ut</Link>
+          <h2 className="header">Steg 5: Styrkor och svårigheter</h2>
+          <Link to="/student-summary" className="next_step">Nästa steg &#x27A4;</Link>
         </header>
         <div className="progress_bar" style={progressWidth}></div>
            
             
-            <div className="feelings_container">
+            <div className="container feelings_container">
 
             <form onSubmit={this.handleFormSubmit.bind(this)}>
               
@@ -216,7 +218,7 @@ export class StudentFeelingsInfo extends Component {
                 <th>Stämmer helt</th>
               </tr>
               
-              <tr>
+              <tr className="question">
                 <td className="space">Har ofta raseriutbrott eller häftigt humör</td>
                 <td>
                   <label className="radio">
@@ -238,7 +240,7 @@ export class StudentFeelingsInfo extends Component {
                 </td>
               </tr>
               
-              <tr>
+              <tr className="question">
                 <td className="space">Oroar sig över mycket, verkar ofta bekymrad</td>
                 <td>
                   <label className="radio">
@@ -260,7 +262,7 @@ export class StudentFeelingsInfo extends Component {
                 </td>
               </tr>
               
-              <tr>
+              <tr className="question">
                 <td className="space">Ofta ledsen, nedstämd eller tårögd</td>
                 <td>
                   <label className="radio">
@@ -282,7 +284,7 @@ export class StudentFeelingsInfo extends Component {
                 </td>
               </tr>
 
-              <tr>
+              <tr className="question">
                 <td className="space">Nervös eller klängig i nya situationer, blir lätt otrygg</td>
                 <td>
                   <label className="radio">
@@ -304,7 +306,7 @@ export class StudentFeelingsInfo extends Component {
                 </td>
               </tr>     
 
-              <tr>
+              <tr className="question">
                 <td className="space">Rädd för mycket, är lättskrämd</td>
                 <td>
                   <label className="radio">
@@ -326,7 +328,7 @@ export class StudentFeelingsInfo extends Component {
                 </td>
               </tr>
 
-              <tr>
+              <tr className="question">
                 <td className="space">Låg tillit till egen förmåga avseende skolarbete</td>
                 <td>
                   <label className="radio">
@@ -348,7 +350,7 @@ export class StudentFeelingsInfo extends Component {
                 </td>
               </tr>
 
-              <tr>
+              <tr className="question">
                 <td className="space">Undvikande av situationer som innebär prestation/rädsla för att misslyckas</td>
                 <td>
                   <label className="radio">
@@ -370,7 +372,7 @@ export class StudentFeelingsInfo extends Component {
                 </td>
               </tr>
 
-              <tr>
+              <tr className="question">
                 <td className="space">Oro inför redovisningar</td>
                 <td>
                   <label className="radio">
@@ -392,7 +394,7 @@ export class StudentFeelingsInfo extends Component {
                 </td>
               </tr>   
 
-              <tr>
+              <tr className="question">
                 <td className="space">Provångest</td>
                 <td>
                   <label className="radio">
@@ -414,7 +416,7 @@ export class StudentFeelingsInfo extends Component {
                 </td>
               </tr>
 
-              <tr>
+              <tr className="question">
                 <td className="space">Oro att göra fel</td>
                 <td>
                   <label className="radio">
@@ -449,7 +451,7 @@ export class StudentFeelingsInfo extends Component {
                 <th>Ja, allvarliga svårigheter</th>
               </tr>
 
-              <tr>
+              <tr className="question">
                 <td className="space">Sammantaget, tycker du att detta barn har svårigheter på ett eller flera av följande områden: Med känslor, koncentration, beteende eller med att komma överens med andra människor?</td>
                 <td>
                   <label className="radio">
@@ -500,7 +502,7 @@ export class StudentFeelingsInfo extends Component {
                 <th>Mer än 1 år</th>
               </tr>
 
-              <tr>
+              <tr className="question">
                 <td className="space">Hur länge har svårigheterna funnits</td>
                 <td>
                   <label className="radio">
@@ -541,7 +543,7 @@ export class StudentFeelingsInfo extends Component {
                 <th>Väldigt mycket</th>
               </tr>
 
-              <tr>
+              <tr className="question">
                 <td className="space">Oroas eller lider barnet av sina svårigheter</td>
                 <td>
                   <label className="radio">
@@ -580,10 +582,11 @@ export class StudentFeelingsInfo extends Component {
                 <th>Ganska mycket</th>
                 <th>Väldigt mycket</th>
               </tr>
+              
               <tr>
-                <td >Stör svårigheterna barnets vardagsliv på något av följande områden?</td>
+                <td>Stör svårigheterna barnets vardagsliv på något av följande områden?</td>
               </tr>
-              <tr>
+              <tr className="question">
                 <td className="space">Med jämnåriga</td>
                 <td>
                   <label className="radio">
@@ -611,7 +614,7 @@ export class StudentFeelingsInfo extends Component {
                 </td>                
               </tr>
 
-              <tr>
+              <tr className="question">
                 <td className="space">I skolarbetet</td>
                 <td>
                   <label className="radio">
@@ -652,7 +655,7 @@ export class StudentFeelingsInfo extends Component {
                 <th>Väldigt mycket</th>
               </tr>
 
-              <tr>
+              <tr className="question">
                 <td className="space">Blir svårigheterna en belastning för dig eller klassen som helhet?</td>
                 <td>
                   <label className="radio">
@@ -682,10 +685,11 @@ export class StudentFeelingsInfo extends Component {
             </tbody>
           </table>                   
                 
-            <button type="submit">Lägg till</button>
+            <button type="submit">Spara</button>
           </form>
             </div>
 
+        
 
         </div>
       );

@@ -29,7 +29,7 @@ export default class StudentBasicInfo extends Component {
 
     firebase.auth().onAuthStateChanged(user => {
       if(user){
-        addBasicInfo(user.uid, teacherName, teacherClass, teacherSubject, studentName, studentAge, studentClass, studentMentor, studentTime);
+        addBasicInfo(user.uid, user.displayName, teacherName, teacherClass, teacherSubject, studentName, studentAge, studentClass, studentMentor, studentTime);
       }
     })
 
@@ -51,21 +51,21 @@ export default class StudentBasicInfo extends Component {
         <div id="basic_page_wrapper">
         
           <header>
-            <h2 className="errand_header">Steg 2: Fyll i basinfo</h2>
-            <Link to="/" onClick={this.logOut} className="log_out">Logga ut</Link>
+            <h2 className="header">Steg 2: Fyll i basinfo</h2>
+            <Link to="/student-learning-info" className="next_step" onClick={this.postBasicInfo}>Nästa steg &#x27A4;</Link>
           </header>
           <div className="progress_bar" style={progressWidth}></div>
           
           <div className="basic_info_wrapper">
-            <div id="teacher_wrapper">
-                <h2>Lärarens info:</h2>
+            <div className="container teacher_container">
+                <h1>Lärarens info:</h1>
                 <input type="text" id="teacher_name" placeholder="För och Efternamn"></input>
                 <input type="text" id="teacher_class" placeholder="Klass"></input>
                 <input type="text" id="teacher_subject" placeholder="Ämne"></input>
             </div>
   
-            <div id="student_wrapper">
-                <h2>Elevens info:</h2>
+            <div className="container student_container">
+                <h1>Elevens info:</h1>
                 <input type="text" id="student_name" placeholder="För och Efternamn"></input>
                 <input type="text" id="student_age" placeholder="Ålder"></input>
                 <input type="text" id="student_class" placeholder="Klass"></input>
@@ -74,7 +74,9 @@ export default class StudentBasicInfo extends Component {
             </div>
           </div>
 
-          <Link to="/student-learning-info" className="next_step" onClick={this.postBasicInfo}>Nästa steg</Link>
+          <Link to="admin" onClick={this.logOut} className="log_out">Logga ut</Link>
+
+          
 
         </div>
       );

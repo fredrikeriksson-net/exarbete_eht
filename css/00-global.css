@@ -1,42 +1,90 @@
 /*
 	EHT - Overview - Global
-	-------------------------------------------
+=============================================
 	Typography
 	Page Structure
 	Content & Media
 	Misc
----------------------------------------------
+=============================================
 */
 
 
-/* Typography */
-p {
-	font-family: "Open Sans";
-	font-size: 13px;
-}
+/* 
+	Typography 
+	-------------------------------------------
+*/
 
-p.bold {
-	font-weight: 700;
-	padding: 0;
-	margin-bottom: 5px;
-}
-
-p.info {
-	font-size: 12px;
-	padding: 0;
-}
-
-p.no_padding {
-	padding-left: 0;
+h1 {
+	color: #333;
+	font-size: 18px;
+	font-family: 'Roboto', sans-serif;
 }
 
 h2 {
 	font-family: "Open Sans";
-	font-size: 18px;
+	font-size: 16px;
 	color: #666;
 }
 
-/* Page Structure */
+h2.header {
+	color: #666;
+  display: inline;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  padding-left: 30px;
+}
+
+
+p {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 14px;
+}
+
+p.bar {
+	padding: 4px;
+	color: #FFF;
+	font-weight: 700;
+}
+
+
+p.info {
+	font-size: 12px;
+	padding: 0;
+	margin: 5px;
+}
+
+span.bold {
+	font-weight: 700;
+}
+
+span.bold_grey {
+	font-weight: 700;
+	color: #666;
+}
+
+span.padding {
+	padding: 1px;
+}
+
+
+
+a.log_out {
+	color: #b6666b;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 700;
+	padding-right: 30px;
+	text-decoration: none;
+}
+
+a.log_out:hover {
+	color: #86181d;
+}
+
+/* 
+	Page Structure 
+	-------------------------------------------
+*/
+
 body {
 	background-color: #f9f9f9;
 }
@@ -56,6 +104,37 @@ header {
 	padding-top: 5px;
 }
 
+/* WRAPPERS */
+.center_wrapper {
+	width: 960px;
+	margin: 100px auto;
+}
+
+.left_flex_wrapper {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	margin-top: 100px;
+}
+
+.left_wrapper {
+	padding: 20px;
+	margin-top: 5px;
+	margin-bottom: 30px;
+	margin-right: 20px;
+}
+
+/* CONTAINERS */
+.container {
+	background-color: #FFF;
+	border-radius: 5px;
+	border: 1px solid #d8dee2;
+	margin: 15px 30px;
+	padding: 20px;
+}
+
+
+
 .progress_bar {
 	background-color: #5f92c7;
 	height: 5px;
@@ -63,7 +142,308 @@ header {
 	top: 45px;
 }
 
-/* Misc */
+
+
+.login_createUser_container {
+	width: 360px;
+	margin: 20px auto;
+}
+
+/* 
+	Options -- Choose Errand - Choose Admin	
+*/
+.options_container {
+	align-items: center;
+	background-color: #FFF;
+	border-radius: 3px;
+	border: 1px solid #CCC;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: 20px;
+	padding: 20px;
+	width: 30%;
+}
+
+.options_container:hover {
+	background-color: #EFEFEF;
+	cursor: pointer;
+}
+
+.options_wrapper {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+/* 
+	Content & Media 
+	-------------------------------------------
+*/
+
+input {
+	border-radius: 3px;
+	border: 1px solid #d8dee2;
+	box-sizing: border-box;
+	padding: 5px;
+	margin-bottom: 20px;
+}
+
+input:focus {
+	border: 1px solid #999;
+  outline: none;
+}
+
+/* SELECT */
+#selecter {
+	color: #000;
+	font-size: 16px;
+	width: 400px;
+	padding: 5px;
+}
+
+#selecter:active, #selecter:hover, #selecter:focus, #selecter option {
+	outline: none;
+}
+
+/* BUTTONS */
+
+/* Lägg till */
+button {
+	background-color: #32c854;
+	border-radius: 3px;
+	border: 1px solid #32c854;
+	box-sizing: border-box;
+	color: #FFF;
+	margin-bottom: 20px;
+	margin-top: 20px;
+	padding: 10px;
+}
+
+button:hover {
+	background-color: #28a745;
+	cursor: pointer;
+}
+
+button:focus {
+	outline: none;
+}
+
+/* Ta bort */
+.delete {
+	color: #FFF;
+	background-color: #c83232;
+	border: 1px solid #aa2525;
+	padding: 10px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	width: 100%;
+	border-radius: 3px;
+	box-sizing: border-box;
+}
+
+.delete:hover {
+	background-color: #a72828;
+}
+
+/* Nästa steg 
+.next_step {
+	display: block;
+	color: #FFF;
+	background-color: #32c854;
+	border: 1px solid #2fac4d;
+	padding: 15px;
+	width: 25%;
+	text-align: center;
+	text-decoration: none;
+	margin-left: 20px;
+	border-radius: 3px;
+}
+
+
+.next_step:hover {
+	background-color: #28a745;
+}
+*/
+
+/* Nästa steg Refactor!*/
+.next_step {
+	/* display: block; */
+	color: #32c854;
+	font-weight: 700;
+	/* padding: 15px; */
+	/* width: 25%; */
+	/* text-align: center; */
+	text-decoration: none;
+	margin-right: 40px;
+}
+
+.next_step:hover {
+	color: #28a745;
+	/* background-color: #28a745; */
+}
+
+
+/* 
+	Options -- Choose Errand - Choose Admin	
+*/
+img.option {
+	height: 102px;
+	width: auto;	
+}
+
+/* 
+	Radio Button	
+*/
+.radio input {
+	display: none;
+}
+
+.radio span {
+	width: 20px;
+	height: 20px;
+	display: block;
+	background: url("/img/radiobutton_unchecked.svg");
+	background-repeat: no-repeat;
+	background-size: 20px 20px;
+	padding: 0px;
+	margin: 5px auto;
+}
+
+.radio input:checked + span {
+	width: 20px;
+	height: 20px;
+	display: block;
+	background: url("/img/radiobutton.svg");
+	background-repeat: no-repeat;
+	background-size: 20px 20px;
+	padding: 0px;
+	margin: 5px auto;
+}
+
+.radio:hover {
+	cursor: pointer;
+}
+
+/* 
+	Checkboxes	
+*/
+.checkbox input {
+	display: none;
+}
+
+.checkbox span {
+	width: 20px;
+	height: 20px;
+	display: block;
+	background: url("/img/checkbox_unchecked.svg");
+	background-repeat: no-repeat;
+	background-size: 20px 20px;
+	margin-left: 15px;
+}
+
+.checkbox input:checked + span {
+	width: 20px;
+	height: 20px;
+	display: block;
+	background: url("/img/checkbox.svg");
+	background-repeat: no-repeat;
+	background-size: 20px 20px;
+}
+
+/* 
+	Range	
+*/
+.range {
+	border: 0px;
+}
+
+.range:focus {
+	border: 0px;
+}
+
+input[type=range] {
+  -webkit-appearance: none;
+  width: 30%;
+  margin-bottom: 0px;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 5px;
+  cursor: pointer;
+  background: #CCC;
+}
+input[type=range]::-webkit-slider-thumb {
+  border: 1px solid #000000;
+  height: 15px;
+  width: 15px;
+  background: #ffffff;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -5px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #666;
+}
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: #3071a9;
+}
+input[type=range]::-moz-range-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 36px;
+  width: 16px;
+  background: #ffffff;
+  cursor: pointer;
+}
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: transparent;
+  border-color: transparent;
+  border-width: 16px 0;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: #2a6495;
+  border: 0.2px solid #010101;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range]::-ms-fill-upper {
+  background: #3071a9;
+  border: 0.2px solid #010101;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range]::-ms-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 36px;
+  width: 16px;
+  background: #ffffff;
+  cursor: pointer;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: #3071a9;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #367ebd;
+}
+
+/* 
+	Misc 
+	-------------------------------------------
+*/
+
 #hide {
 	display: none;
 }
@@ -93,29 +473,5 @@ header {
     100% { transform: rotate(360deg); }
 }
 
-/*  Radio button */
-.radio input {
-	display: none;
-}
 
-.radio span {
-	width: 20px;
-	height: 20px;
-	display: block;
-	background: url("/img/radiobutton_unchecked.svg");
-	background-repeat: no-repeat;
-	background-size: 20px 20px;
-	padding: 5px;
-	margin: 5px auto;
-}
-
-.radio input:checked + span {
-	width: 20px;
-	height: 20px;
-	display: block;
-	background: url("/img/radiobutton.svg");
-	background-repeat: no-repeat;
-	background-size: 20px 20px;
-	padding: 5px;
-}
 

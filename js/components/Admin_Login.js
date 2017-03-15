@@ -8,7 +8,7 @@ import {Router, Route, IndexRoute, Link, IndexLink, IndexRedirect, hashHistory} 
 import * as firebase from "firebase";
 
 
-export default class Login extends Component {
+export default class AdminLogin extends Component {
   constructor(props){
     super(props)
 
@@ -42,6 +42,7 @@ export default class Login extends Component {
     const password = txtPassword.value;
     const auth = firebase.auth();
 
+
     // Sign in / With error handling
     const promise = auth.signInWithEmailAndPassword(email, password);
       promise.catch(function(e){
@@ -64,10 +65,10 @@ export default class Login extends Component {
 
     });
 
-    // If login is a success, send to Errand Options
+    // If login is a success, send to Admin Test
     firebase.auth().onAuthStateChanged(user => {
       if(user){
-        hashHistory.push('/errand-options')          
+        hashHistory.push('/admin-options')          
       }
     })
 
@@ -81,7 +82,7 @@ export default class Login extends Component {
   render() {
     return (
       <div className="wrapper">
-        <img className="logo" src="../img/logo.svg" />
+        <img className="logo" src="../img/logo_admin.svg" />
         <div className="container login_createUser_container">
           <p className="input">E-mail</p>
             <input id="txtEmail" type="email" placeholder="&#9993;" />

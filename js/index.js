@@ -8,6 +8,7 @@ import LearningCSS from "../css/04-learningInfo.css";
 import BehaviorCSS from "../css/05-behaviorInfo.css";
 import FeelingInfoCSS from "../css/06-feelingsInfo.css";
 import SummaryCSS from "../css/07-summary.css";
+import AdminCSS from "../css/08-admin.css";
 
 
 // import testCss from "../css/01-test.css";
@@ -39,6 +40,13 @@ import * as firebase from "firebase";
 
 
 // Components / Containers
+import AdminLogin from "./components/Admin_Login";
+import AdminOptions from "./components/Admin_Options";
+import CreateUser from "./components/Create_User";
+import BrowseUsers from "./containers/Browse_Users";
+import BrowseErrands from "./containers/Browse_Errands";
+import BrowseErrandDetails from "./containers/Browse_ErrandDetails";
+
 import Login from "./components/Login";
 import ErrandOptions from "./components/Errand_Options";
 import StudentBasicInfo from "./components/Student_BasicInfo";
@@ -59,6 +67,14 @@ ReactDOM.render(
 	<Provider store={createStoreWithMiddleware(reducers)}>
 	 	<Router history={hashHistory}>
 	 		<Route path='/' component={Login} />
+				<Route path='admin' component={AdminLogin} />
+				<Route path='admin-options' component={AdminOptions} />
+				<Route path='create-user' component={CreateUser} />
+				<Route path='browse-users' component={BrowseUsers} />
+				<Route path='browse-errands/:id/:displayName' component={BrowseErrands} />
+				<Route path='browse-errand-details/:id/:errand_id/:displayName' component={BrowseErrandDetails} />
+
+
 				<Route path='errand-options' component={ErrandOptions} />
 				<Route path='student-basic-info' component={StudentBasicInfo} />
 				<Route path='student-learning-info' component={StudentLearningInfo} />

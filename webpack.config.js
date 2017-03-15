@@ -21,13 +21,20 @@ const config = {
     	  }],
     	},
 
+      { 
+        test: /\.json$/, 
+        // loader: 'json-loader'
+        use: [ 'json-loader' ]
+      },
+
     	// CSS Loader
     	{
     	  test: /\.css$/,
     	  use: [ 'style-loader', 'css-loader' ]
-    	}
+    	},
 
     ]
+
   }
 
 };

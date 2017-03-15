@@ -72,7 +72,7 @@ export class StudentBehaviorInfo extends Component {
           // Get current errand data
           setTimeout( () => {
             for (var currentErrandID in this.props.userDatabase[0]);
-            this.props.currentErrand(user.uid, currentErrandID);
+            this.props.currentErrand(user.uid, currentErrandID, user.displayName);
           }, 2000);
           
         }
@@ -90,7 +90,7 @@ export class StudentBehaviorInfo extends Component {
   }
 
   showBehavior(){
-    let behaviorValue = document.getElementById("behavior");
+    let behaviorValue = document.getElementById("selecter");
     this.setState({behaviorValue: behaviorValue.value})
     this.setState({behaviorInput:"show"})
   }
@@ -99,7 +99,7 @@ export class StudentBehaviorInfo extends Component {
   postBehavior(){
 
       return (
-        <div className="post_behavior_container">
+        <div className="container post_behavior_container">
 
           <h2>{this.state.behaviorValue}</h2>
     
@@ -112,7 +112,7 @@ export class StudentBehaviorInfo extends Component {
                     <span></span>
                   </label>
                 </div>
-              <div classname="rules" id={this.state.rulesInput}>
+              <div className="row_align" id={this.state.rulesInput}>
                   <input type="range" className="behavior_range" value={this.state.selectedRulesFrequency} min="1" max="10" step="1" onChange={this.handleFrequencyRules} />
                    <p>{this.state.selectedRulesFrequency}</p>
               </div>
@@ -124,7 +124,7 @@ export class StudentBehaviorInfo extends Component {
                     <span></span>
                   </label>
                 </div>
-              <div classname="rules" id={this.state.verbalInput}>
+              <div className="row_align" id={this.state.verbalInput}>
                   <input type="range" className="behavior_range" value={this.state.selectedVerbalFrequency} min="1" max="10" step="1" onChange={this.handleFrequencyVerbal} />
                    <p>{this.state.selectedVerbalFrequency}</p>
               </div>                
@@ -136,7 +136,7 @@ export class StudentBehaviorInfo extends Component {
                     <span></span>
                   </label>
                 </div>
-              <div classname="rules" id={this.state.aggressiveInput}>
+              <div className="row_align" id={this.state.aggressiveInput}>
                   <input type="range" className="behavior_range" value={this.state.selectedAggressiveFrequency} min="1" max="10" step="1" onChange={this.handleFrequencyAggressive} />
                    <p>{this.state.selectedAggressiveFrequency}</p>
               </div>                   
@@ -148,7 +148,7 @@ export class StudentBehaviorInfo extends Component {
                     <span></span>
                   </label>
                 </div>
-              <div classname="rules" id={this.state.seclusiveInput}>
+              <div className="row_align" id={this.state.seclusiveInput}>
                   <input type="range" className="behavior_range" value={this.state.selectedSeclusiveFrequency} min="1" max="10" step="1" onChange={this.handleFrequencySeclusive} />
                    <p>{this.state.selectedSeclusiveFrequency}</p>
               </div>                                             
@@ -240,7 +240,7 @@ export class StudentBehaviorInfo extends Component {
 
 
     // addBehavior action
-    addBehavior(user.uid, currentErrandID, this.state.behaviorValue, this.state.rulesIssue, this.state.selectedRulesFrequency, this.state.verbalIssue, this.state.selectedVerbalFrequency, this.state.aggressiveIssue, this.state.selectedAggressiveFrequency, this.state.seclusiveIssue, this.state.selectedSeclusiveFrequency)
+    addBehavior(user.uid, currentErrandID, user.displayName, this.state.behaviorValue, this.state.rulesIssue, this.state.selectedRulesFrequency, this.state.verbalIssue, this.state.selectedVerbalFrequency, this.state.aggressiveIssue, this.state.selectedAggressiveFrequency, this.state.seclusiveIssue, this.state.selectedSeclusiveFrequency)
 
 
     })
@@ -273,17 +273,17 @@ export class StudentBehaviorInfo extends Component {
     for(var behaviorID in this.props.currentErrandReducer[0].behavior){
 
       behaviorArray.push(
-        <div key={behaviorID} className="show_behavior_container">
+        <div key={behaviorID} className="container show_behavior_container">
 
-          <h2>{this.props.currentErrandReducer[0].behavior[behaviorID].behaviorValue}</h2>
+          <h1>{this.props.currentErrandReducer[0].behavior[behaviorID].behaviorValue}</h1>
           
-          {this.props.currentErrandReducer[0].behavior[behaviorID].rulesIssue === true ? <p>Rules: {this.props.currentErrandReducer[0].behavior[behaviorID].rulesFrequency}</p> : <p id="hide"></p>}
-          {this.props.currentErrandReducer[0].behavior[behaviorID].verbalIssue === true ? <p>Verbal: {this.props.currentErrandReducer[0].behavior[behaviorID].verbalFrequency}</p> : <p id="hide"></p>}
-          {this.props.currentErrandReducer[0].behavior[behaviorID].aggressiveIssue === true ? <p>Aggressive: {this.props.currentErrandReducer[0].behavior[behaviorID].aggressiveFrequency}</p> : <p id="hide"></p>}
-          {this.props.currentErrandReducer[0].behavior[behaviorID].seclusiveIssue === true ? <p>Seclusive: {this.props.currentErrandReducer[0].behavior[behaviorID].seclusiveFrequency}</p> : <p id="hide"></p>}
+          {this.props.currentErrandReducer[0].behavior[behaviorID].rulesIssue === true ? <p>Svårt att följa de instruktioner eller regler som finns inom givet sammanhanget och hamnar således i konflikt med andra barn eller skolpersonal på grund av detta: <span className="bold">{this.props.currentErrandReducer[0].behavior[behaviorID].rulesFrequency}</span></p> : <p id="hide"></p>}
+          {this.props.currentErrandReducer[0].behavior[behaviorID].verbalIssue === true ? <p>Svårt för att verbalt kommunicera med andra, det vill säga att framföra vad en själv tycker och tänker samt tolka vad andra säger: <span className="bold">{this.props.currentErrandReducer[0].behavior[behaviorID].verbalFrequency}</span></p> : <p id="hide"></p>}
+          {this.props.currentErrandReducer[0].behavior[behaviorID].aggressiveIssue === true ? <p>Svårt för att verbalt kommunicera med andra, det vill säga att framföra vad en själv tycker och tänker samt tolka vad andra säger: <span className="bold">{this.props.currentErrandReducer[0].behavior[behaviorID].aggressiveFrequency}</span></p> : <p id="hide"></p>}
+          {this.props.currentErrandReducer[0].behavior[behaviorID].seclusiveIssue === true ? <p>Drar sig undan från andra, är ensam och håller sig ofta för sig självt: <span className="bold">{this.props.currentErrandReducer[0].behavior[behaviorID].seclusiveFrequency}</span></p> : <p id="hide"></p>}
           
 
-          <button onClick={this.delBehavior.bind(this, behaviorID)}>Radera ämne</button>
+          <button className="delete" onClick={this.delBehavior.bind(this, behaviorID)}>Radera situation</button>
         </div>
       )
 
@@ -309,7 +309,7 @@ export class StudentBehaviorInfo extends Component {
         for (var currentErrandID in this.props.userDatabase[0]);
       }
 
-    deleteSelectedBehavior(user.uid, currentErrandID, behaviorID);
+    deleteSelectedBehavior(user.uid, currentErrandID, user.displayName, behaviorID);
 
     })
   }
@@ -324,18 +324,19 @@ export class StudentBehaviorInfo extends Component {
 
     if(this.props.currentErrandReducer[0]) {
       return (
-        <div id="behavior_wrapper">
+        <div>
 
         <header>
-          <h2 className="errand_header">Steg 4: Social färdighet</h2>
-          <Link to="/" onClick={this.logOut} className="log_out">Logga ut</Link>
+          <h2 className="header">Steg 4: Social färdighet</h2>
+          <Link className="next_step" to="/student-feelings-info">Nästa steg &#x27A4;</Link>
         </header>
         <div className="progress_bar" style={progressWidth}></div>
  
-            <div id="behavior_info_wrapper">
+            <div className="left_flex_wrapper">
 
-            <div className="add_behavior_wrapper">
-              <select id="behavior" onClick={this.clearForm.bind(this)} onChange={this.showBehavior.bind(this)}>
+            <div>
+            <div className="container">
+              <select id="selecter" onClick={this.clearForm.bind(this)} onChange={this.showBehavior.bind(this)}>
                 <option selected disabled>Situationer där hinder uppstår:</option>
                 <option value="Matsal">Matsal</option>
                 <option value="Rast inne">Rast inne</option>
@@ -347,6 +348,7 @@ export class StudentBehaviorInfo extends Component {
                 <option value="Korridor">Korridor</option>
                 <option value="Övergångar">Övergångar</option>
               </select>
+              </div>
             
   
               <div id={this.state.behaviorInput}>
@@ -361,7 +363,7 @@ export class StudentBehaviorInfo extends Component {
 
             </div>
 
-            <Link className="next_step" to="/student-feelings-info">Nästa</Link>
+            
   
         </div>
       );

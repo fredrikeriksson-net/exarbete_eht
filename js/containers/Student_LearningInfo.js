@@ -72,8 +72,8 @@ export class StudentLearningInfo extends Component {
           // Get current errand data
           setTimeout( () => {
             for (var currentErrandID in this.props.userDatabase[0]);
-            this.props.currentErrand(user.uid, currentErrandID);
-          }, 2000);
+            this.props.currentErrand(user.uid, currentErrandID, user.displayName);
+          }, 3000);
           
         }
   
@@ -90,7 +90,7 @@ export class StudentLearningInfo extends Component {
   }
 
   showLearning(){
-    let subjectValue = document.getElementById("subject");
+    let subjectValue = document.getElementById("selecter");
     this.setState({subjectValue: subjectValue.value})
     this.setState({learningInput:"show"})
   }
@@ -99,18 +99,19 @@ export class StudentLearningInfo extends Component {
   postLearning(){
 
       return (
-        <div className="post_learning_container">
+        <div className="container">
 
-          <h2>{this.state.subjectValue}</h2>
+          <h1>{this.state.subjectValue}</h1>
     
           <form onSubmit={this.handleFormSubmit.bind(this)}>
-              <p className="bold">Hur är barnets måluppfyllnad i ämnet?</p>
-              <p className="info"><strong>1:</strong> Ligger tydligt och klart efter, är långt ifrån målen</p>
-              <p className="info"><strong>2:</strong> Ligger efter behöver extra stöd, är dock nära att nå målen </p>
-              <p className="info"><strong>3:</strong> Ligger något efter men når antagligen målen</p>
-              <p className="info"><strong>4:</strong> Är i nivå med snittet i klassen</p>
-              <p className="info"><strong>5:</strong> Högpresterande</p>
-              <div className="difficulty_wrapper">
+              <h2>Hur är barnets måluppfyllnad i ämnet?</h2>
+              <p className="info"><span className="bold">1:</span> Ligger tydligt och klart efter, är långt ifrån målen</p>
+              <p className="info"><span className="bold">2:</span> Ligger efter behöver extra stöd, är dock nära att nå målen </p>
+              <p className="info"><span className="bold">3:</span> Ligger något efter men når antagligen målen</p>
+              <p className="info"><span className="bold">4:</span> Är i nivå med snittet i klassen</p>
+              <p className="info"><span className="bold">5:</span> Högpresterande</p>
+              
+              <div className="difficulty_radiobuttons">
                 <label className="difficulty_1">
                   <input type="radio" value={"1"} checked={this.state.selectedDifficulty === "1"} onChange={this.handleDifficultyChange} />
                   <span></span>
@@ -134,13 +135,13 @@ export class StudentLearningInfo extends Component {
               </div>
 
               <div className="issue_container">
-                <p className="bold">Inlärningssvårigheter:</p>
+              <h2>Inlärningssvårigheter:</h2>
 
               <div className="issue_divider">
               
               <div className="left">
                 <div className="difficulty_checkbox">
-                  <p className="no_padding">Ingångsättning</p>
+                  <p>Ingångsättning</p>
                   <label className="checkbox">
                     <input type="checkbox" value={this.state.onsetIssue} checked={this.state.onsetIssue} onChange={this.handleOnsetIssue} />
                     <span></span>
@@ -148,7 +149,7 @@ export class StudentLearningInfo extends Component {
                 </div>
 
                 <div className="difficulty_checkbox">
-                  <p className="no_padding">Uthållighet</p>
+                  <p>Uthållighet</p>
                   <label className="checkbox">
                     <input type="checkbox" value={this.state.staminaIssue} checked={this.state.staminaIssue} onChange={this.handleStaminaIssue} />
                     <span></span>
@@ -156,7 +157,7 @@ export class StudentLearningInfo extends Component {
                 </div>
 
                 <div className="difficulty_checkbox">
-                  <p className="no_padding">Avslut</p>
+                  <p>Avslut</p>
                   <label className="checkbox">
                     <input type="checkbox" value={this.state.closingIssue} checked={this.state.closingIssue} onChange={this.handleClosingIssue} />
                     <span></span>
@@ -164,7 +165,7 @@ export class StudentLearningInfo extends Component {
                 </div>
 
                 <div className="difficulty_checkbox">
-                  <p className="no_padding">Långsam arbetsgång</p>
+                  <p>Långsam arbetsgång</p>
                   <label className="checkbox">
                     <input type="checkbox" value={this.state.slowWorkFlowIssue} checked={this.state.slowWorkFlowIssue} onChange={this.handleSlowWorkFlowIssue} />
                     <span></span>
@@ -172,7 +173,7 @@ export class StudentLearningInfo extends Component {
                 </div>
 
                 <div className="difficulty_checkbox">
-                  <p className="no_padding">Svårt att förstå gruppinstruktioner</p>
+                  <p>Svårt att förstå gruppinstruktioner</p>
                   <label className="checkbox">
                     <input type="checkbox" value={this.state.groupInstructionIssue} checked={this.state.groupInstructionIssue} onChange={this.handleGroupInstructionIssue} />
                     <span></span>
@@ -180,7 +181,7 @@ export class StudentLearningInfo extends Component {
                 </div>                
 
                 <div className="difficulty_checkbox">
-                  <p className="no_padding">Svårt att förstå individuella instruktioner</p>
+                  <p>Svårt att förstå individuella instruktioner</p>
                   <label className="checkbox">
                     <input type="checkbox" value={this.state.individualInstructionIssue} checked={this.state.individualInstructionIssue} onChange={this.handleIndividualInstructionIssue} />
                     <span></span>
@@ -191,7 +192,7 @@ export class StudentLearningInfo extends Component {
 
               <div className="right">
                 <div className="difficulty_checkbox">
-                  <p className="no_padding">Kommer av sig under arbetet</p>
+                  <p>Kommer av sig under arbetet</p>
                   <label className="checkbox">
                     <input type="checkbox" value={this.state.loseTrackIssue} checked={this.state.loseTrackIssue} onChange={this.handleLoseTrackIssueIssue} />
                     <span></span>
@@ -199,7 +200,7 @@ export class StudentLearningInfo extends Component {
                 </div>
 
                 <div className="difficulty_checkbox">
-                  <p className="no_padding">Läs och skriv svårigheter</p>
+                  <p>Läs och skriv svårigheter</p>
                   <label className="checkbox">
                     <input type="checkbox" value={this.state.readWriteIssue} checked={this.state.readWriteIssue} onChange={this.handleReadWriteIssue} />
                     <span></span>
@@ -207,7 +208,7 @@ export class StudentLearningInfo extends Component {
                 </div>
 
                 <div className="difficulty_checkbox">
-                  <p className="no_padding">Svårt att följa instruktioner</p>
+                  <p>Svårt att följa instruktioner</p>
                   <label className="checkbox">
                     <input type="checkbox" value={this.state.followInstructionsIssue} checked={this.state.followInstructionsIssue} onChange={this.handleFollowInstructionsIssue} />
                     <span></span>
@@ -215,7 +216,7 @@ export class StudentLearningInfo extends Component {
                 </div>
 
                 <div className="difficulty_checkbox">
-                  <p className="no_padding">Svårt med mängder</p>
+                  <p>Svårt med mängder</p>
                   <label className="checkbox">
                     <input type="checkbox" value={this.state.amountsIssue} checked={this.state.amountsIssue} onChange={this.handleAmountsIssue} />
                     <span></span>
@@ -223,7 +224,7 @@ export class StudentLearningInfo extends Component {
                 </div>
 
                 <div className="difficulty_checkbox">
-                  <p className="no_padding">Svårt att använda sig av strategier</p>
+                  <p>Svårt att använda sig av strategier</p>
                   <label className="checkbox">
                     <input type="checkbox" value={this.state.strategiesIssue} checked={this.state.strategiesIssue} onChange={this.handleStrategiesIssue} />
                     <span></span>
@@ -231,7 +232,7 @@ export class StudentLearningInfo extends Component {
                 </div>
 
                 <div className="difficulty_checkbox">
-                  <p className="no_padding">Svårt med taluppfattning (10 systemet, addition, subtraktion)</p>
+                  <p>Svårt med taluppfattning (10 systemet, addition, subtraktion)</p>
                   <label className="checkbox">
                     <input type="checkbox" value={this.state.numbersIssue} checked={this.state.numbersIssue} onChange={this.handleNumbersIssue} />
                     <span></span>
@@ -245,16 +246,16 @@ export class StudentLearningInfo extends Component {
               </div>
 
               <div>
-                <p className="bold">Hur ofta sker inlärningssvårigheterna?</p>
-                <p className="info"><strong>1</strong> = 1gång i veckan eller färre</p>
-                <p className="info"><strong>2</strong> = 2-3 gånger i veckan</p>
-                <p className="info"><strong>3</strong> = 3-5gånger i veckan</p>
-                <p className="info"><strong>4</strong> = 5-10 gånger i veckan</p>
-                <p className="info"><strong>5</strong> = 10 gånger och uppåt i veckan</p> 
+                <h2>Hur ofta sker inlärningssvårigheterna?</h2>
+                <p className="info"><span className="bold">1:</span> 1 gång i veckan eller färre</p>
+                <p className="info"><span className="bold">2:</span> 2-3 gånger i veckan</p>
+                <p className="info"><span className="bold">3:</span> 3-5 gånger i veckan</p>
+                <p className="info"><span className="bold">4:</span> 5-10 gånger i veckan</p>
+                <p className="info"><span className="bold">5:</span> 10 gånger och uppåt i veckan</p> 
                 
                 <div className="difficulty_wrapper">
                   <input type="range" className="range" value={this.state.selectedFrequency} min="1" max="5" step="1" onChange={this.handleFrequencyChange} />
-                  <p>{this.state.selectedFrequency}</p>
+                  <p><span className="bold">{this.state.selectedFrequency}</span></p>
                 </div>
               </div>
 
@@ -399,7 +400,7 @@ export class StudentLearningInfo extends Component {
     this.setState({learningInput:"hide"})
 
     // addLearning action
-    addLearning(user.uid, currentErrandID, this.state.subjectValue, this.state.selectedDifficulty, this.state.selectedFrequency, this.state.onsetIssue, this.state.staminaIssue, this.state.closingIssue, this.state.slowWorkFlowIssue, this.state.groupInstructionIssue, this.state.individualInstructionIssue, this.state.loseTrackIssue, this.state.readWriteIssue, this.state.followInstructionsIssue, this.state.amountsIssue, this.state.strategiesIssue, this.state.numbersIssue);
+    addLearning(user.uid, currentErrandID, user.displayName, this.state.subjectValue, this.state.selectedDifficulty, this.state.selectedFrequency, this.state.onsetIssue, this.state.staminaIssue, this.state.closingIssue, this.state.slowWorkFlowIssue, this.state.groupInstructionIssue, this.state.individualInstructionIssue, this.state.loseTrackIssue, this.state.readWriteIssue, this.state.followInstructionsIssue, this.state.amountsIssue, this.state.strategiesIssue, this.state.numbersIssue);
 
     })
   }
@@ -428,12 +429,12 @@ export class StudentLearningInfo extends Component {
     for(var learningID in this.props.currentErrandReducer[0].learning){
 
       subjectArray.push(
-        <div key={learningID} className="show_learning_container">
+        <div key={learningID} className="container">
 
-          <h2>{this.props.currentErrandReducer[0].learning[learningID].subject}</h2>
-          <p>Svårighet: {this.props.currentErrandReducer[0].learning[learningID].difficulty}</p>
-          <p>Frekvens: {this.props.currentErrandReducer[0].learning[learningID].frequency}</p>
-          <p>Områden:</p>
+          <h1>{this.props.currentErrandReducer[0].learning[learningID].subject}</h1>
+          <p><span className="bold_grey">Måluppfyllnad: </span> {this.props.currentErrandReducer[0].learning[learningID].difficulty}</p>
+          
+          <p><span className="bold_grey">Inlärningssvårigheter:</span></p>
           {this.props.currentErrandReducer[0].learning[learningID].onsetIssue === true ? <p>Ingångsättning</p> : <p id="hide"></p>}
           {this.props.currentErrandReducer[0].learning[learningID].staminaIssue === true ? <p>Uthållighet</p> : <p id="hide"></p>}
           {this.props.currentErrandReducer[0].learning[learningID].closingIssue === true ? <p>Avslut</p> : <p id="hide"></p>}
@@ -459,6 +460,7 @@ export class StudentLearningInfo extends Component {
           this.props.currentErrandReducer[0].learning[learningID].amountsIssue === false &&
           this.props.currentErrandReducer[0].learning[learningID].strategiesIssue === false &&
           this.props.currentErrandReducer[0].learning[learningID].numbersIssue === false ? <p>Inga områden valda</p> : <p id="hide"></p>}
+          <p><span className="bold_grey">Hur ofta sker inlärningssvårigheterna:</span> {this.props.currentErrandReducer[0].learning[learningID].frequency}</p>
           <button className="delete" onClick={this.delSubject.bind(this, learningID)}>Radera ämne</button>
         </div>
       )
@@ -468,7 +470,7 @@ export class StudentLearningInfo extends Component {
     return(
       <div className="subject_wrapper">
         {subjectArray}
-        <Link to="/student-behavior-info" className="next_step">Nästa Steg</Link>
+        
       </div>
     )
 
@@ -482,7 +484,7 @@ export class StudentLearningInfo extends Component {
         for (var currentErrandID in this.props.userDatabase[0]);
       }
 
-    deleteSelectedSubject(user.uid, currentErrandID, learningID);
+    deleteSelectedSubject(user.uid, currentErrandID, user.displayName, learningID);
 
     })
   }
@@ -499,18 +501,19 @@ export class StudentLearningInfo extends Component {
 
     if(this.props.currentErrandReducer[0]) {
       return (
-        <div id="learning_page_wrapper">
+        <div>
 
         <header>
-          <h2 className="errand_header">Steg 3: Inlärning</h2>
-          <Link to="/" onClick={this.logOut} className="log_out">Logga ut</Link>
+          <h2 className="header">Steg 3: Inlärning</h2>
+          <Link to="/student-behavior-info" className="next_step">Nästa steg &#x27A4;</Link>
         </header>
         <div className="progress_bar" style={progressWidth}></div>
 
-          <div className="learning_info_wrapper">
+          <div className="left_flex_wrapper">
             
-            <div className="add_subjects_wrapper">
-              <select id="subject" onClick={this.clearForm.bind(this)} onChange={this.showLearning.bind(this)}>
+            <div>
+              <div className="container">
+              <select id="selecter" onClick={this.clearForm.bind(this)} onChange={this.showLearning.bind(this)}>
                 <option selected disabled>Välj ett ämne att lägga till:</option>
                 <option value="Bild">Bild</option>
                 <option value="Biologi">Biologi</option>
@@ -532,25 +535,22 @@ export class StudentLearningInfo extends Component {
                 <option value="Svenska">Svenska</option>
                 <option value="Teknik">Teknik</option>
               </select>
-
+              </div>
 
               <div id={this.state.learningInput}>
                 {this.postLearning()}
               </div>
 
-
             </div>
 
-            <div className="added_subjects_wrapper">
-              {this.showSubjects()}
-            </div>
+              <div className="added_subjects_wrapper">
+                {this.showSubjects()}
+              </div>
 
           </div>
-
-            
   
         </div>
-      );
+      )
     }
   
     else {

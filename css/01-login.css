@@ -15,6 +15,7 @@ Typography
 p.input {
 	color: #666;
 	margin-bottom: 5px;
+	padding-left: 0px;
 }
 
 p#error {
@@ -22,46 +23,34 @@ p#error {
 }
 
 a.close {
-	text-decoration: none;
 	color: #b6666b;
 	cursor: pointer;
+	text-decoration: none;
 }
 
 a.close:hover {
 	color: #86181d;
 }
 
-
-
 /*
 Page Structure
 */
-.wrapper {
-margin-top: 50px;
-}
 
-.login_container {
-	border: 1px solid #d8dee2;
-	background-color: #FFF;
-	margin: 0 auto;
-	width: 360px;
-	padding: 20px;
-	border-radius: 5px;
-	margin-top: 15px;
-	margin-bottom: 30px;
+.wrapper {
+	margin-top: 50px;
 }
 
 .error_container {
-	display: flex;
-	flex-direction: row;
 	align-items: center;
-  justify-content: space-around;
 	background-color: #ffdce0;
 	border-radius: 5px;
-	margin: 0 auto;
-	width: 380px;
-	padding: 10px;
 	border: 1px solid #ddc0c4;
+	display: flex;
+	flex-direction: row;
+	margin: 0 auto;
+	padding: 10px;
+	width: 380px;
+  justify-content: space-around;
 }
 
 
@@ -70,42 +59,24 @@ Content & Media
 */
 
 img.logo {
-	width: 350px;
-	height: auto;
 	display: block;
+	height: auto;
 	margin: 0 auto;
+	width: 350px;
 }
 
-input {
-	border: 1px solid #d8dee2;
-	border-radius: 3px;
-	padding: 5px;
+#txtEmail, #txtPassword {
 	width: 100%;
-	box-sizing: border-box;
 }
 
-input:focus {
-	border: 1px solid #999;
-    outline: none;
-}
-
-button {
-	color: #FFF;
+.login_button {
 	background-color: #32c854;
 	border: 1px solid #2fac4d;
-	padding: 10px;
-	margin-top: 20px;
-	margin-bottom: 20px;
 	width: 100%;
-	border-radius: 3px;
-	box-sizing: border-box;
 }
 
-button:hover {
+.login_button:hover {
 	background-color: #28a745;
 	cursor: pointer;
 }
 
-input:focus, button:focus {
-    outline: none;
-}

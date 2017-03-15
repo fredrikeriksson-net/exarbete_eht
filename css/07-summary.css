@@ -1,16 +1,8 @@
+
 .show_summary_container {
-	border: 1px solid #d8dee2;
-	background-color: #FFF;
-	width: 400px;
-	padding: 20px;
-	border-radius: 5px;
-	margin-top: 15px;
-	margin-bottom: 30px;
-	margin-right: 20px;
-	margin-left: 20px;
+	width: 25%;
 }
 
 .bar {
-	background-color: indianred;
-	height: 5px;
+	background-color: #5f92c7;
 }

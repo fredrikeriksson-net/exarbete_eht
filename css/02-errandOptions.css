@@ -8,73 +8,12 @@
 ---------------------------------------------
 */
 
-/* Typography */
-p {
-	font-family: 'Open Sans', sans-serif;
-	margin: 0;
-	padding: 10px;
-}
-
-h2.errand_header {
-	color: #666;
-  display: inline;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 400;
-  padding-left: 30px;
-}
-
-a.log_out {
-	font-family: 'Open Sans', sans-serif;
-	font-weight: 700;
-	padding-right: 30px;
-	text-decoration: none;
-	color: #b6666b;
-}
-
-a.log_out:hover {
-	color: #86181d;
-}
-
 /* Page Structure */
 
-.errand_wrapper {
-	width: 960px;
-	margin: 150px auto;
-}
 
-.errand_container {
-	background-color: #FFF;
-	margin: 20px;
-	padding: 20px;
-	border: 1px solid #CCC;
-	border-radius: 3px;
-	width: 30%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-}
 
-.errand_container:hover {
-	background-color: #EFEFEF;
-	cursor: pointer;
-}
-
-.options_wrapper {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: center;
-}
 
 
 
 /* Content & Media */
 
-img.option {
-	height: 102px;
-	width: auto;	
-}
-
-
-/* Misc */

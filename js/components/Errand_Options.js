@@ -43,32 +43,34 @@ render(){
 		<div>
 			
 			<header>
-				<h2 className="errand_header">Steg 1: Välj Ärende</h2>
-				<Link to="/" onClick={this.logOut} className="log_out">Logga ut</Link>
+				<h2 className="header">Steg 1: Välj Ärende</h2>
 			</header>
 			<div className="progress_bar" style={progressWidth}></div>
 			
-			<div className="errand_wrapper">
-				
+			<div className="center_wrapper">
 				<div className="options_wrapper">
 					
-					<div className="errand_container" onClick={this.studentErrand}>
+					<div className="options_container" onClick={this.studentErrand}>
 						<img className="option" src="../img/choose_student.svg"/>
 						<p>Enskild elev</p>
 					</div>
 						
-					<div className="errand_container" onClick={this.groupErrand}>
+					<div className="options_container" onClick={this.groupErrand}>
 						<img className="option" src="../img/choose_group.svg"/>
 						<p>Grupp</p>
 					</div>
+
+
+
+					
 	
 				</div>
-	
-				
-
 			</div>
+			
 		</div>
 	)
 }
 
 }
+
+// <Link to="/" onClick={this.logOut} className="log_out">Logga ut</Link>
